@@ -1,0 +1,35 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Contact
+    meta(name="description" content="Telephone 118202 , customer service phone number call 118202, 24h.")
+    link(rel="icon" type="image/png" href="./assets/images/favicon.png")
+    // build:css css/main.min.css 
+    link(rel="stylesheet" href="./css/main.css")
+    // endbuild 
+  body
+
+    // header 
+    include includes/header.pug
+
+    // contact 
+    section.wrapper.full--height.bg--very-light-gray
+      .container
+        .row
+          .box.box--sm.box--lg
+            h2.heading Contact
+            .contact
+              .contact__form
+                p.text.contact__text
+                  Do you have a question to submit? Do not hesitate to contact us via the contact form on this page. We will get back to you as soon as possible.
+                include includes/form.pug
+              .contact__map
+                iframe(src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d1518.7969352572818!2d-3.6735980000000006!3d40.417847!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1614836585374!5m2!1sen!2sus" style="border:0;" allowfullscreen="" loading="lazy")
+
+    // footer 
+    include includes/footer.pug
+
+    // scripts 
+    include includes/scripts.pug

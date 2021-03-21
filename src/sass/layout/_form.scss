@@ -1,0 +1,49 @@
+.form {
+  padding: 10% 5% 0;
+  @include respond-to(small) {
+    padding: 5% 5%;
+  }
+  @include respond-to(large) {
+    padding: 2% 5% 5%;
+  }
+  &__group {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-bottom: 15px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__button {
+    border-radius: 3px;
+    padding: 12px 0;
+    width: 90px;
+    color: $white;
+    font-weight: 700;
+    &--submit {
+      background-color: $bright-orange;
+    }
+  }
+  & label {
+    display: block;
+    width: 100%;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  & input, textarea {
+    border: 1px solid $light-gray;
+    border-radius: 3px;
+    padding: 3% 2%;
+    @include placeholder() {
+      color: $dark-gray;
+      background-color: $light-gray;
+    }
+    @include respond-to(small) {
+      padding: 10px;
+    }
+  }
+  & textarea {
+    min-height: 80px;
+    resize: vertical;
+  }
+}

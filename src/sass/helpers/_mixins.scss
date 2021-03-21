@@ -1,0 +1,41 @@
+// RESPOND-TO
+@mixin respond-to($breakpoint) {
+  // Check if the key exists
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Get the value of the key
+    $value: map-get($breakpoints, $breakpoint);
+    @media only screen and (min-width: $value) {
+      @content;
+    }
+  }
+  @else { 
+    @warn "Unknown #{$breakpoint} in $breakpoints";
+  }
+}
+
+// FONT-FACE
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg otf) {
+  $src: null;
+  $extmods: (eot: "?", svg: "#" + str-replace($name, " ", "_"));
+  $formats: (otf: "opentype", ttf: "truetype");
+  @each $ext in $exts {
+    $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+    $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+  }
+  @font-face {
+    font-family: quote($name);
+    font-style: $style;
+    font-weight: $weight;
+    font-display: swap;
+    src: $src;
+  }
+}
+
+// PLACEHOLDER
+@mixin placeholder() {
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}
+}

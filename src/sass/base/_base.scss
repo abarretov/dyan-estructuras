@@ -1,0 +1,201 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+html, body {
+  height: 100%;
+}
+
+textarea {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; 
+  width: 100%;
+}
+
+hr {
+  margin: 3% 0;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+}
+
+video {
+  width: 100%;
+  height: auto;
+}
+
+fieldset {
+  border: 1px solid $black;
+  padding: 5%;
+}
+
+body {
+  position: relative;
+	margin: auto;
+  color: $dark-gray;
+  font-family: $open-sans;
+  font-weight: 400;
+	overflow-x: hidden;
+  line-height: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $ubuntu;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+p {
+  font-size: 16px;
+}
+
+.freeze {
+  overflow: hidden;
+  &::before {
+    background-color: $black-transparent;
+    z-index: 99;
+  }
+}
+
+.full {
+  &--height {
+    min-height: 100%;
+  }
+}
+
+.heading {
+  position: relative;
+  margin-bottom: 10%;
+  font-weight: 500;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  text-align: center;
+  @include respond-to(extra-small) {
+    font-size: 1.5rem;
+  }
+  @include respond-to(small) {      
+    font-size: 1.8rem;
+  }
+  @include respond-to(large) {
+    margin-bottom: 3%;
+    font-size: 2rem;
+  }
+  @include respond-to(huge) {
+    font-size: 3rem;
+  }
+}
+
+.text {
+  margin-bottom: 15px;
+  width: 100%;
+  line-height: 1.6;
+  &--bold {
+    font-weight: 700
+  }
+  &--bordered {
+    padding-bottom: 15px;
+    border-bottom: 1px solid $light-gray;
+  }
+}
+
+.list {
+  list-style-type: none;
+  & li {
+    position: relative;
+    margin-bottom: 15px;
+    padding-left: 30px;
+    width: 100%;
+    line-height: 1.6;
+    &::before {
+      position: absolute;
+      content: '';
+      top: 8px;
+      left: 5px;
+      border-radius: 2px;
+      width: 8px;
+      height: 8px;
+      background-color: $bright-orange;
+      filter: drop-shadow(1px 1px 0 $black);
+    }
+  }
+}
+
+.bg {
+  &--strong-blue {
+    background-color: $strong-blue;
+  }
+  &--bright-orange {
+    background-color: $bright-orange;
+  }
+  &--very-light-gray {
+    background-color: $very-light-gray;
+  }
+  &--hero-clip-path {
+    &::before, &::after {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+    &::before {
+      background-color: $strong-blue-transparent--hero;
+      @include respond-to(large) {
+        background-color: $strong-blue-transparent;
+        clip-path: polygon(0% 0%, 53% 0%, 60% 20%, 53% 100%, 0% 100%);
+      }
+      @include respond-to(huge) {
+        clip-path: polygon(0% 0%, 50% 0%, 55% 20%, 50% 100%, 0% 100%);
+      }
+    }
+    &::after {
+        background-color: $black-transparent--hero;
+      @include respond-to(large) {
+        background-color: $black-transparent;
+        clip-path: polygon(0% 0%, 47% 0%, 60% 20%, 48% 100%, 0% 100%);
+      }
+      @include respond-to(huge) {
+        clip-path: polygon(0% 0%, 45% 0%, 55% 20%, 47% 100%, 0% 100%);
+      }
+    }
+  }
+  &--hero-image {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('../assets/images/background-mobile.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      z-index: -1;
+      @include respond-to(large) {
+        background-image: url('../assets/images/background-desktop.jpg');
+        background-size: contain;
+        background-position: right;
+      }
+    }
+  }
+}

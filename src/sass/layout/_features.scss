@@ -1,0 +1,36 @@
+.features {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  &__item {
+    margin-bottom: 60px;
+    width: 100%;
+    @include respond-to(large) {
+      margin-bottom: 0;
+      width: 30%;
+      min-height: 170px;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__icon {
+    font-size: 40px;
+    text-align: center;
+    color: $bright-orange;
+    display: block;
+  }
+  &__title, &__description {
+    text-align: center;
+  }
+  &__title {
+    margin: 20px 0;
+    color: $strong-blue;
+    line-height: 1;
+  }
+  &__description {
+    line-height: 1.4;
+  }
+}

@@ -1,0 +1,26 @@
+header.header
+  .wrapper.bg--very-light-gray
+    .container
+      .header__top
+        a(href="tel:0333 030 0102")
+          i.fas.fa-mobile-alt
+          |0333 030 0102
+        a(href="mailto:customer@sumando.info")
+          i.fas.fa-envelope
+          |customer@sumando.info
+  .wrapper.bg--strong-blue
+    .container
+      .header__bottom
+        a.brand(href="./index.html")
+          .brand__content
+            span.brand__title Customer Support
+            span.brand__subtitle Get assistance in your inquiries
+        .menu
+          //- .menu__line
+          nav#menuNav.menu__nav
+            a.menu__link(href="./conditions-generales-dutilisation.html") Privacy Policy
+            a.menu__link(href="./legal.html") legal
+            a.menu__link(href="./contacto.html") Contacto
+            a.menu__link.menu__link--btn.btn--shine(href="tel:118202" target="_blank") Call Now
+          #menuBtn.menu__btn
+            span.menu__shape

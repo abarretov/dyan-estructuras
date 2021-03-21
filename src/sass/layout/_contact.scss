@@ -1,0 +1,50 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  @include respond-to(small) {
+    display: flex;
+    align-items: center;
+  }
+  @include respond-to(large) {
+    flex-direction: row;
+    background-color: $white;
+    border-radius: 5px;
+  }
+  &__text {
+    padding: 0 5%;
+  }
+  &__form {
+    width: 100%;
+    margin-bottom: 15%;
+    @include respond-to(small) {
+      margin-bottom: 0;
+      padding-top: 0;
+    }
+    @include respond-to(large) {
+      width: 40%;
+    }
+  }
+  &__map {
+    position: relative;
+    margin: 0 auto;
+    padding-bottom: 75%;
+    width: 90%;
+    height: 0;
+    overflow: hidden;
+    @include respond-to(small) {
+      margin-top: 0;
+    }
+    @include respond-to(large) {
+      border-radius: 5px;
+      padding-bottom: 56.25%;
+      width: 60%;
+    }
+    & iframe {
+      position:absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

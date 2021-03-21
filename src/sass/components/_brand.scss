@@ -1,0 +1,43 @@
+.brand {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+  text-decoration: none;
+  z-index: 102;
+  &::before {
+    margin-right: 10px;
+    content: '';
+    width: 30px;
+    height: 30px;
+    background-image: url('../assets/images/logo.svg');
+    background-repeat: no-repeat;
+    background-size: 30px;
+  }
+  &__content {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+  }
+  &__title, &__subtitle {
+    color: $white;
+    font-family: $ubuntu;
+    line-height: 1;
+  }
+  &__title {    
+    font-size: 20px;
+    font-weight: 500;
+  }
+  &__subtitle {
+    font-size: 13px;
+    font-weight: 300;
+    font-style: italic;
+  }
+  &--footer {
+    grid-area: brand;
+    justify-self: center;
+    @include respond-to(large) {
+      justify-self: start;
+    }
+  }
+}

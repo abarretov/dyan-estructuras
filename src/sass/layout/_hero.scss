@@ -1,0 +1,119 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 60px);
+  overflow: hidden;
+  @include respond-to(large) {
+    height: calc(100vh - 90px);
+  }
+  @include respond-to(huge) {
+    max-height: 710px;
+  }
+  &__container {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr;
+    grid-template-areas: "content";
+    @include respond-to(large) {
+      grid-template-columns: 2fr 2fr;
+      grid-template-areas: "content .";
+    }
+  }
+  &__content {
+    padding: 0 5%;
+    grid-area: content;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  &__title, &__subtitle {
+    width: 100%;
+    color: $very-light-gray;
+    line-height: 1.2;
+    text-align: center;
+    z-index: 1;
+    @include respond-to(large) {
+      text-align: left;
+    }
+  }
+  &__title {
+    margin-bottom: 10%;
+    font-size: 2rem;
+    @include respond-to(extra-small) {
+      font-size: 2.5rem;
+    }
+    @include respond-to(medium) {
+      font-size: 3.5rem;
+    }
+    @include respond-to(large) {
+      margin-bottom: 7%;
+      font-size: 2.5rem;
+    }
+  }
+  &__subtitle {
+    margin-bottom: 5%;
+    font-family: $ubuntu;
+    font-size: 1.5rem;
+    @include respond-to(extra-small) {
+      font-size: 1.8rem;
+    }
+    @include respond-to(medium) {
+      font-size: 3rem;
+    }
+    @include respond-to(large) {
+      font-size: 2rem;
+    }
+  }
+  &__cta {    
+    margin-bottom: 5%;
+    width: 100%;
+    z-index: 1;
+    @include respond-to(large) {
+      margin-bottom: 7%;
+    }
+  }
+  &__price {
+    margin: 0 auto;
+    width: 90%;
+    color: $very-light-gray;
+    font-family: $open-sans;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    text-align: center;
+    z-index: 1;
+    @include respond-to(extra-small) {
+      font-size: 0.9rem;
+    }
+    @include respond-to(small) {
+      width: 70%;
+      font-size: 1rem;
+    }
+    @include respond-to(large) {
+      text-align: left;
+      width: 100%;
+    }
+  }
+  &__footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: $bright-orange;
+    z-index: 1;
+  }
+  &__text {
+    padding: 7px 0;
+    min-height: 30px;
+    color: $white;
+    font-size: 1rem;
+    line-height: 1;
+    text-align: center;
+    @include respond-to(extra-small) {
+      padding: 5px 0;
+      font-size: 1.2rem;
+    }
+  }
+}

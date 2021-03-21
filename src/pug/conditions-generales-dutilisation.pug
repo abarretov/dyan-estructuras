@@ -1,0 +1,47 @@
+doctype html
+html(lang="en")
+  head    
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Telephone, contact, customer service phone number
+    meta(name="description" content="Telephone 118202 , customer service phone number call 118202, 24h.")
+    link(rel="icon" type="image/png" href="./assets/images/favicon.png")
+    // build:css css/main.min.css 
+    link(rel="stylesheet" href="./css/main.css")
+    // endbuild 
+  body
+
+    // header 
+    include includes/header.pug
+
+    // privacy policy 
+    section.wrapper.bg--very-light-gray
+      .container
+        .row
+          .box.box--sm.box--lg
+          h2.heading Privacy Policy
+          p.text.
+            Your privacy is very important for us. Accordingly, we have developed this Policy to understand how we collect, use, communicate and disclose and make use of personal information. Next, our privacy policy is described.
+          ul.list
+            li.
+              Before or at the time of collecting personal information, we will identify the purposes for which the information is collected.
+            li.
+              We will collect and use personal information only for the purpose of complying with the purposes specified by us and for other compatible purposes, unless we obtain the consent of the person concerned or as required by law.
+            li.
+              We will only retain personal information for as long as it is necessary for the fulfillment of said purposes.
+            li.
+              We will collect personal information by legal and fair means and, where appropriate, with the knowledge or consent of the person concerned.
+            li.
+              Personal data must be relevant to the purposes for which they will be used and, to the extent necessary for those purposes, they must be accurate, complete and up-to-date.
+            li.
+              We will protect personal information through reasonable security protections against loss or theft, as well as unauthorized access, disclosure, copying, use or modification.
+            li.
+              We will provide clients with information about our policies and practices related to the management of personal information.
+            li.
+              We are committed to conducting our business in accordance with these principles in order to ensure that the confidentiality of personal information is protected and maintained.
+
+    // footer 
+    include includes/footer.pug
+    
+    // scripts 
+    include includes/scripts.pug
