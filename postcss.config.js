@@ -1,5 +1,13 @@
+const autoprefixer = require('autoprefixer')
+const purgecss = require('@fullhuman/postcss-purgecss')
+
 module.exports = {
   plugins: [
-    require('autoprefixer')({cascade: false})
+    autoprefixer({ cascade: false }),
+    purgecss({
+      content: ['./src/**/*.pug', './src/js/**/*.js']
+      // fontFace: true,
+      // keyframes: true,
+    })
   ]
 }

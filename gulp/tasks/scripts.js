@@ -1,25 +1,27 @@
 // =============================================================================
 // Gulp task: scripts
-// Description: Transpile, compress and minify all our ES6+ code to ES5
+// Description: Compress all our ES6+ to ES5
 // =============================================================================
 // Packages
-//   gulp / gulp-terser / gulp-load-plugins / browser-sync
+//   gulp / gulp-terser / gulp-load-plugins / gulp-file-cache
 // =============================================================================
 
-module.exports = function(gulp, plugins, config) {
-  return function scripts() {
+module.exports = (gulp, packages, config) => {
+  return () => {
 // ------------------------------------------------------------------ Start Task
-    if (process.env.NODE_ENV === 'production') {
-      var stream =
-        gulp.src(config.scripts.glob.src) 
-        .pipe(plugins.terser())
-        .pipe(gulp.dest(config.scripts.dir.build))
-    } else {
+    let fileCache = new packages.fileCache('.js-cache')
+    if (process.env.NODE_ENV !== 'production') {
       var stream = 
-        // gulp.src(config.scripts.glob.src, { sourcemaps: true })
-        gulp.src(config.scripts.glob.src, { since: gulp.lastRun(scripts), sourcemaps: true })
-        .pipe(plugins.terser())
-        .pipe(gulp.dest(config.scripts.dir.build, { sourcemaps: '.'}))
+        gulp.src(config.scripts.glob.src, { sourcemaps: true })
+          .pipe(fileCache.filter())
+          .pipe(packages.terser())
+          .pipe(fileCache.cache())
+          .pipe(gulp.dest(config.scripts.dir.build, { sourcemaps: '.' }))
+    } else {
+      var stream =
+        gulp.src(config.scripts.glob.src)
+          .pipe(packages.terser())
+          .pipe(gulp.dest(config.scripts.dir.build))
     }
 // -------------------------------------------------------------------- End Task
     return stream

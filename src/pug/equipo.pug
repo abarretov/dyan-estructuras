@@ -1,0 +1,150 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Equipo - D'yan Estructuras
+    meta(name="description" content="")
+    link(rel="icon" type="image/png" href="./assets/images/favicon.png")
+    // build:css css/main.min.css 
+    link(rel="stylesheet" href="./css/main.css")
+    // endbuild 
+    // build:js js/global.min.js defer 
+    script(src="./js/helpers/utils.js" defer)
+    script(src="./js/helpers/variables.js" defer)
+    script(src="./js/helpers/numbers.js" defer)
+    script(src="./js/set-vh.js" defer)
+    script(src="./js/preloader.js" defer)
+    script(src="./js/menu.js" defer)
+    script(src="./js/show-whatsapp.js" defer)
+    // endbuild 
+    // build:js js/team.min.js defer
+    script(src="./js/smooth-collapse.js" defer)
+    script(src="./js/team.js" defer)
+    // endbuild 
+  body.freeze
+
+    // preloader 
+    include partials/preloader.pug
+
+    // header 
+    include partials/header.pug
+
+    // hero 
+    section.hero
+      .hero__wrapper.hero__wrapper--team
+        .hero__container
+          .hero__row.no-gutter
+            .col-xs-12.col-md-8
+              .hero__content
+                h1.hero__title Tu proyecto y tus sueños están en buenas manos
+                p.hero__subtitle Conoce al equipo de profesionales que están para hacer realidad tus ideas.
+                .hero__cta
+                  a.button.button--slide.bg--primary.dark-gray(href="./#servicios")
+                    span Servicios
+                    span.button__icon.bg--secondary
+                      img(src="./assets/images/icons/buttons/calculator.svg" alt="")
+                  a.button.button--slide.bg--secondary.white(href="./#proyectos")
+                    span Proyectos
+                    span.button__icon.bg--primary
+                      img(src="./assets/images/icons/buttons/folder-open.svg" alt="")
+
+    // team 
+    section.team
+      .wrapper
+        .container
+          .row.no-gutter
+            .col-xs-12
+              h2.team__subtitle Conozca al equipo multidiciplinario y dinámico  de la empresa de construcción D’yan Estructuras
+              p.team__text Pellentesque imperdiet, nunc quis laoreet venenatis. Orci ex, suscipit eget eros et, molestie interdum ante. Pellentesque imperdiet, nunc quis laoreet venenatis. Aliquam orci ex, suscipit eget eros et, molestie interdum ante.  Imperdiet, nunc venenatis. Aliquam orci ex, suscipit eget eros et, molestie interdum. Pellentesque imperdiet, nunc quis laoreet venenatis. Aliquam orci ex, suscipit eget eros.
+          .row.no-gutter
+            .col-xs-12.col-sm-6
+              .card.card--main.card--reverse
+                .card__content.card__content--right
+                  h3.card__name Oscarli D’Yan
+                  div(data-state="collapsed")
+                    p.card__charge Ingeniero Estructural
+                  div(data-state="expanded")
+                    p.card__resume Ingeniero Civil egresada de la Universidad de Carabobo - Venezuela, con una especialización en Ingeniería Estructural.
+                  div(data-state="collapsed")
+                    p.card__more Duis at arcu quis quam bibendum dictum quis. Mauris vitae dolor pharetra, tempus elit nec, pellentesque mi.
+                  ul.card__info(data-state="collapsed")
+                    li.card__data.card__data--mail oscarli@dyanestructuras.com
+                    li.card__data.card__data--phone +51 876 654 532
+                    li.card__data.card__data--phone +51 443 094 234
+                img.card__img.card__img--main.card__img--margin-left(src="./assets/images/team/members/oscarli-dyan.png" data-trigger="collapse" alt="")
+            .col-xs-12.col-sm-6
+              .card.card--main
+                img.card__img.card__img--main.card__img--margin-right(src="./assets/images/team/members/mario-rodriguez.png" data-trigger="collapse" alt="")
+                .card__content
+                  h3.card__name Mario Rodriguez
+                  div(data-state="collapsed")
+                    p.card__charge Ingeniero Civil
+                  div(data-state="expanded")
+                    p.card__resume Ingeniero Civil egresado de la Universidad Territorial Deltaica - Francisco Tamayo, con una especialización en Ingeniería Vial y Carreteras.
+                  div(data-state="collapsed")
+                    p.card__more Mauris vitae dolor pharetra, tempus elit nec, pellentesque mi. Duis at arcu quis quam bibendum dictum quis sit amet mauris.
+                  ul.card__info(data-state="collapsed")
+                    li.card__data.card__data--left.card__data--mail mario@dyanestructuras.com
+                    li.card__data.card__data--left.card__data--phone +51 987 654 321
+                    li.card__data.card__data--left.card__data--phone +51 866 994 235
+          //- .row.no-gutter.center-xs
+            .col-xs-12.col-sm-6.col-md-auto
+              .card
+                img.card__img(src="./assets/images/team/members/santiago-oropeza.png" data-trigger="collapse" alt="")
+                .card__content
+                  h3.card__name.card__name--tiny Santiago Oropeza
+                  p.card__charge Arquitecto
+                  div(data-state="expanded")
+                    p.card__resume Mauris vitae dolor pharetra, tempus elit nec, pellentesque mi. Duis at arcu quis quam bibendum dictum quis sit amet mauris.
+                  div(data-state="collapsed")
+                    p.card__more Duis at arcu quis quam bibendum dictum quis sit amet mauris. Mauris vitae dolor pharetra, tempus elit nec, pellentesque mi.
+            .col-xs-12.col-sm-6.col-md-auto
+              .card
+                img.card__img(src="./assets/images/team/members/selene-navas.png" data-trigger="collapse" alt="")
+                .card__content
+                  h3.card__name.card__name--tiny Selene Navas
+                  p.card__charge Ingeniero Civil
+                  div(data-state="expanded")
+                    p.card__resume Duis at arcu quis quam bibendum dictum quis sit amet mauris. Mauris vitae dolor pharetra, tempus elit nec, pellentesque mi.
+                  div(data-state="collapsed")
+                    p.card__more Mauris vitae dolor pharetra, tempus elit nec, pellentesque mi. Duis at arcu quis quam bibendum dictum quis sit amet mauris.
+            .col-xs-12.col-sm-6.col-md-auto
+              .card
+                img.card__img(src="./assets/images/team/members/guillermo-morales.png" data-trigger="collapse" alt="")
+                .card__content
+                  h3.card__name.card__name--tiny Guillermo Morales
+                  p.card__charge Ingeniero Civil
+                  div(data-state="expanded")
+                    p.card__resume  Duis at arcu quis quam bibendum dictum quis sit amet. Mauris vitae dolor pharetra, tempus elit.
+                  div(data-state="collapsed")
+                    p.card__more Mauris vitae dolor pharetra, tempus elit nec, pellentesque mi. Duis at arcu quis quam bibendum dictum quis sit amet mauris.
+            .col-xs-12.col-sm-6.col-md-auto
+              .card
+                img.card__img(src="./assets/images/team/members/guillermo-morales.png" data-trigger="collapse" alt="")
+                .card__content
+                  h3.card__name.card__name--tiny Juan Estrada
+                  p.card__charge Arquitecto
+                  div(data-state="expanded")
+                    p.card__resume  Vitae dolor pharetra, tempus elit nec, pellentesque mi. Duis at arcu quis quam bibendum quis sit amet mauris.
+                  div(data-state="collapsed")
+                    p.card__more  Duis at arcu quis quam bibendum dictum quis sit amet. Mauris vitae dolor pharetra, tempus elit.
+
+    // banner 
+    section.banner.bg--primary
+      .banner__container
+        .banner__row.no-gutter
+          .col-xs-12
+            .banner__content
+              p.banner__text
+                |Solicita una cotización con solo llamar o escribir
+              a.button.button--slide.bg--secondary.white(href="./contacto.html")
+                span Contáctanos
+                span.button__icon.bg--primary
+                  img(src="./assets/images/icons/buttons/envelope-dark-gray.svg" alt="")
+
+    // footer 
+    include partials/footer.pug
+
+    // whatsapp 
+    include partials/whatsapp.pug

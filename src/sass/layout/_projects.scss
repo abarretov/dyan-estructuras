@@ -1,0 +1,336 @@
+.projects {
+  $this: &;
+  @extend %wrapper;
+  max-height: 768px;
+  background-color: $secondary;
+  @include respond-to(small) {
+    background-image: linear-gradient(-45deg, $secondary-transparent, $primary-transparent), url('../assets/images/team/high-buildings.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 50px 0;
+  }
+  @include respond-to(large) {
+    padding: 100px 0;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $black;
+    opacity: 0.3;
+  }
+  // cover all the width of the viewport on mobile
+  & [class*=col-] {
+    padding: 0;
+    @include respond-to(small) {
+      padding: 0 calc($gutter / 2);
+    }
+  }
+  &__wrapper {
+    position: relative;
+  }
+  &__selectors {
+    z-index: 1;
+    position: absolute;
+    right: 0;
+    bottom: 60%;
+    flex-flow: column nowrap;
+    width: auto;
+    display: flex;
+    align-items: center;
+    @include respond-to(small) {
+      position: inherit;
+      bottom: unset;
+      margin-bottom: 30px;
+      flex-flow: row nowrap;
+      justify-content: center;
+      width: inherit;
+    }
+    & button {
+      position: relative;
+      height: 60px;
+      color: transparent;
+      font-family: $barlow-semi-condensed;
+      font-weight: 500;
+      text-transform: uppercase;
+      text-shadow: none;
+      transition: 0.4s;
+      @include respond-to(small) {
+        margin: 0 10px;
+        padding: 10px;
+        height: inherit;
+        color: $white;
+        border: 2px solid transparent;
+        font-size: 18px;
+        text-shadow: 1px 1px 3px $black-transparent;
+      }
+      &#residentials {
+        &::before {
+          background-image: url('../assets/images/icons/projects/building-house.svg');
+        }
+        &.active, &:hover {
+          &::before {
+            background-image: url('../assets/images/icons/projects/building-house-white.svg');
+          }
+        }
+      }
+      &#commercials {
+        &::before {
+          background-image: url('../assets/images/icons/projects/business.svg');
+        }
+        &.active, &:hover {
+          &::before {
+            background-image: url('../assets/images/icons/projects/business-white.svg');
+          }
+        }
+      }
+      &#industrials {
+        &::before {
+          background-image: url('../assets/images/icons/projects/factory.svg');
+        }
+        &.active, &:hover {
+          &::before {
+            background-image: url('../assets/images/icons/projects/factory-white.svg');
+          }
+        }
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px;
+        height: 40px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        filter: drop-shadow(1px 1px 3px $black-transparent);
+        transition: 0.4s;
+        @include respond-to(small) {
+          content: unset;
+          display: none;
+        }
+      }
+      &.active, &:hover {
+        @include respond-to(small) {
+          border: 2px solid $white;
+          color: $primary;
+        }
+      }
+    }
+  }
+  &__siema {
+    // make invisible the elements
+    display: none;
+    opacity: 0;
+    // make visible the elements
+    &.active {
+      animation: fadefromnone 0.4s linear forwards;
+      display: block; // prevent the display reverts back to none after the opacity animation runs
+    }
+  }
+  &__slide {
+    height: 600px;
+    @include respond-to(small) {
+      height: inherit;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0 10px;
+    }
+    @include respond-to(large) {
+      height: inherit;
+      display: grid;
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px 5px;
+    }
+  }
+  &__item {
+    user-select: none;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    padding: 15px;
+    height: 100%;
+    width: 100%;
+    @include respond-to(small) {
+      // border effect
+      @include border-slide($white, 2px, 1s);
+    }
+    @include respond-to(large) {
+      height: 205px;
+    }
+    &::before {
+      z-index: 1;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $black;
+      // opacity: 0.3;
+      opacity: 0.1;
+      @include respond-to(large) {
+        opacity: 0;
+        transition: 1s;
+      }
+    }
+    // hover effect
+    &:hover {
+      @include respond-to(small) {
+        &::before {
+          opacity: 0.6;
+        }
+        & #{$this}__img {
+          transform: scale(1.2);
+        }
+        & #{$this}__title, & #{$this}__description, & #{$this}__link {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  &__img {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+    transform: scale(1);
+    transition: 1s;
+  }
+  &__content {
+    z-index: 1;
+    padding: 0 0 120px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    @include respond-to(small) {
+      padding: 10px 20px;
+      justify-content: space-evenly;
+    }
+  }
+  &__title, &__description {
+    z-index: 1;
+    margin-bottom: 20px;
+    padding: 0 20px;
+    text-shadow: 1px 1px 3px $black-transparent;
+    @include respond-to(small) {
+      padding: unset;
+      opacity: 0;
+      transition: 1s;
+    }
+    @include respond-to(large) {
+      margin-bottom: 0;
+    }
+  }
+  &__title {
+    grid-area: title;
+    align-self: center;
+    color: $primary;
+    font-size: 24px;
+    text-align: center;
+    @include respond-to(small) {
+      font-size: 20px;
+    }
+  }
+  &__description {
+    grid-area: description;
+    color: $white;
+    line-height: 1.5;
+    text-align: center;
+    @include respond-to(small) {
+      font-size: 16px;
+      line-height: 1.2;
+    }
+  }
+  &__link {
+    grid-area: link;
+    overflow: hidden;
+    z-index: 1;
+    position: relative;
+    box-shadow: 1px 1px 3px $black-transparent;
+    border-radius: 3px;
+    padding: 10px 15px;
+    background-color: $secondary-transparent;
+    color: $primary;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px $black-transparent;
+    @include respond-to(small) {
+      margin-bottom: 20px;
+      padding: 5px 10px;
+      opacity: 0;
+      font-size: 16px;
+      transition: 1s;
+    }
+    @include respond-to(large) {
+      margin-bottom: 0;
+    }
+    &::after {
+      @include respond-to(large) {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(90deg, transparent, $white-transparent, transparent);
+        transition: 0.5s;
+      }
+    }
+    &:hover {
+      &::after {
+        @include respond-to(large) {
+          left: 100%;  
+        }
+      }
+    }
+  }
+  &__buttons {
+    position: absolute;
+    margin: 0 auto;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+    // make invisible the elements
+    display: none;
+    opacity: 0;
+    @include respond-to(small) {
+      margin-top: 40px;
+      position: inherit;
+      bottom: unset;
+      transform: unset;
+      width: inherit;
+    }
+    & button {
+      &:first-child {
+        margin-right: 30px;
+        @include respond-to(large) {
+          margin-right: 20px;
+        }
+      }
+      &:last-child {
+        margin-left: 30px;
+        @include respond-to(large) {
+          margin-left: 0;
+        }
+      }
+    }
+    // make visible the elements
+    &.active {
+      animation: fadefromnone 0.4s linear forwards;
+      display: block; // prevent the display reverts back to none after the opacity animation runs
+    }
+  }
+}

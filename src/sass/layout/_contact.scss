@@ -1,43 +1,113 @@
 .contact {
-  display: flex;
-  flex-direction: column;
-  @include respond-to(small) {
-    display: flex;
-    align-items: center;
-  }
+  @extend %wrapper;
   @include respond-to(large) {
-    flex-direction: row;
-    background-color: $white;
-    border-radius: 5px;
+    height: calc(100vh - 100px); // fallback for browsers that do not support Custom Properties
+    height: calc(calc(var(--vh, 1vh) * 100) - 100px);
   }
-  &__text {
-    padding: 0 5%;
+  @include respond-to(extra-large) {
+    max-height: 700px;
   }
-  &__form {
-    width: 100%;
-    margin-bottom: 15%;
-    @include respond-to(small) {
-      margin-bottom: 0;
+  & .wrapper {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: linear-gradient(-45deg, $secondary-transparent, $primary-transparent), url('../assets/images/contact/construction-notes.jpg');
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $black;
+      opacity: 0.4;
+    }
+  }
+  & .row {
+    padding-top: 70px;
+    flex-wrap: wrap-reverse;
+    @include respond-to(large) {
+      flex-wrap: wrap;
       padding-top: 0;
     }
+  }
+  &__form, &__info {
+    padding: 60px 40px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
     @include respond-to(large) {
-      width: 40%;
+      padding: 20px 40px;
     }
   }
-  &__map {
+  &__form {
     position: relative;
-    margin: 0 auto;
-    padding-bottom: 75%;
-    width: 90%;
-    height: 0;
-    overflow: hidden;
+    // overflow: hidden;
+    @include respond-to(large) {
+      height: 520px;
+    }
+    @include respond-to(extra-large) {
+      height: 580px;
+    }
+  }
+  &__info {
+    padding-bottom: 0;
+    @include respond-to(large) {
+      height: 520px;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: flex-start;
+    }
+    @include respond-to(extra-large) {
+      height: 580px;
+    }
+  }
+  &__content {
+    grid-area: content;
+  }
+  &__title, &__subtitle, &__text {
+    z-index: 1;
+    margin-bottom: 20px;
+    color: $white;
+    line-height: 1.2;
+    text-shadow: 1px 1px 3px $black;
     @include respond-to(small) {
-      margin-top: 0;
+      text-shadow: none;
+    }
+  }
+  &__title {
+    font-size: 42px;
+    font-weight: 500;
+    & span {
+      color: $primary;
+      // -webkit-text-stroke: 2px $dark-gray;
+    }
+  }
+  &__subtitle {
+    font-size: 28px;
+    font-weight: 500;
+    @include respond-to(small) {
+      font-size: 32px;
+    }
+  }
+  &__text {
+    font-weight: 300;
+  }
+  &__map {
+    grid-area: map;
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+    border-radius: 2px;
+    height: auto;
+    padding-bottom: 90.25%;
+    @include respond-to(small) {
+      margin: 0;
+      padding-bottom: 56.25%;
     }
     @include respond-to(large) {
-      border-radius: 5px;
-      padding-bottom: 56.25%;
-      width: 60%;
+      margin: 20px 0;
     }
     & iframe {
       position:absolute;
@@ -45,6 +115,37 @@
       left: 0;
       height: 100%;
       width: 100%;
+    }
+  }
+  &__networks {
+    display: none;
+    @include respond-to(large) {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+    }
+    & a {
+      display: flex;
+      align-items: center;
+      color: $white;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      @include respond-to(large) {
+        margin-left: 20px;
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+      &:hover {
+        color: $white;
+      }
+      & img {
+        margin-right: 5px;
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+      }
     }
   }
 }

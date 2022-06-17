@@ -1,0 +1,21 @@
+.primary {
+  color: $primary;
+}
+.white {
+  color: $white;
+}
+.dark-gray {
+  color: $dark-gray;
+}
+.bg {
+  &--green {
+    background-image: url('../assets/images/img-green.jpg');
+    background-repeat: repeat;
+  }
+  &--primary {
+    background-color: $primary;
+  }
+  &--secondary {
+    background-color: $secondary;
+  }
+}

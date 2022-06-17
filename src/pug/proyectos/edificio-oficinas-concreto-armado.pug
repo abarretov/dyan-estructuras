@@ -1,0 +1,124 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Edificio de Oficinas de Concreto Armado | D'yan Estructuras
+    meta(name="description" content="")
+    link(rel="icon" type="image/png" href="../assets/images/favicon.png")
+    // build:css ../css/main.min.css 
+    link(rel="stylesheet" href="../css/main.css")
+    // endbuild 
+    script(src="../js/lib/siema.min.js" defer)
+    // build:js ../js/global.min.js defer 
+    script(src="../js/helpers/utils.js" defer)
+    script(src="../js/helpers/variables.js" defer)
+    script(src="../js/helpers/numbers.js" defer)
+    script(src="../js/set-vh.js" defer)
+    script(src="../js/preloader.js" defer)
+    script(src="../js/menu.js" defer)
+    script(src="../js/show-whatsapp.js" defer)
+    // endbuild 
+    // build:js ../js/projects.min.js defer 
+    script(src="../js/project.js" defer)
+    // endbuild 
+  body.freeze
+
+    // preloader 
+    include ../partials/preloader.pug
+
+    // header 
+    header.header.header--abs
+      .wrapper.bg--green
+        .container
+          .header__top
+            .header__contact-info
+              a(href="./#footer")
+                img(src="../assets/images/icons/contact/clock.svg" alt="")
+                span.primary Horario:
+                span &nbsp;Lun - Vie: 8am - 5pm
+              a(href="tel:+51933987543")
+                img(src="../assets/images/icons/contact/phone.svg" alt="")
+                span.primary Teléfono:
+                span &nbsp;+51 933 987 543
+              a(href="mailto:info@dyanstructuras.com")
+                img(src="../assets/images/icons/contact/envelope.svg" alt="")
+                span.primary Email:
+                span &nbsp;info@dyanstructuras.com
+            .header__social-icon
+              a(href="" target="_blank")
+                img(src="../assets/images/icons/networks/facebook.svg" alt="")
+              a(href="" target="_blank")
+                img(src="../assets/images/icons/networks/instagram.svg" alt="")
+              a(href="" target="_blank")
+                img(src="../assets/images/icons/networks/linkedin.svg" alt="")
+      .wrapper
+        .container
+          .header__bottom
+            a.brand(href="../")
+            button.hamburger
+              span.hamburger__icon
+            .navbar
+              nav#navbarNav.navbar__nav
+                a.navbar__item(href="../") Inicio
+                a.navbar__item.scroll-trigger(href="../#servicios") Servicios
+                a.navbar__item.scroll-trigger(href="../#proyectos") Proyectos
+                a.navbar__item(href="../equipo.html") Equipo
+                a.navbar__item(href="../contacto.html") Contacto
+
+    // project 
+    section.project
+      .project__carousel
+        .siema-project
+          img.siema__img.siema__img--brightness(src="../assets/images/projects/edificio-oficinas-concreto-armado/1.png" alt="")
+          img.siema__img.siema__img--brightness(src="../assets/images/projects/edificio-oficinas-concreto-armado/2.png" alt="")
+          img.siema__img.siema__img--brightness(src="../assets/images/projects/edificio-oficinas-concreto-armado/3.png" alt="")
+          img.siema__img.siema__img--brightness(src="../assets/images/projects/edificio-oficinas-concreto-armado/4.png" alt="")
+          img.siema__img.siema__img--brightness(src="../assets/images/projects/edificio-oficinas-concreto-armado/5.png" alt="")
+          img.siema__img.siema__img--brightness(src="../assets/images/projects/edificio-oficinas-concreto-armado/6.png" alt="")
+          img.siema__img.siema__img--brightness(src="../assets/images/projects/edificio-oficinas-concreto-armado/7.png" alt="")
+      .project__wrapper
+        .project__container
+          .project__content.project__content--center
+            h2.project__title.
+              Edificio de Oficinas de Concreto Armado
+            //- p.project__location Ecuador - Perú
+            h3.project__subtitle Edificación de oficinas
+            ul.project__list
+              li Edificio de concreto armado de (10) niveles con (02) sótanos
+              li Diseño estructural de columnas, vigas, losas aligeradas y macizas
+              li Diseño estructural de placas
+              li Análisis estructural con software de diseño
+              //- li Bloque de control de carga
+              //- li Bloque de senasa
+              //- li Bloque de servicios
+              //- li Bloque de vigilancia
+            //- p.project__text
+            //-   |Pellentesque imperdiet, nunc quis laoreet venenatis, lacus nisl porta sapien, non euismod justo purus sed urna. Proin a lacus varius, porta augue ut, ornare quam. Vestibulum porta pellentesque ligula sed consequat.
+            //-   br
+            //-   br
+            //-   |Proin a lacus varius, porta augue ut, ornare quam. Vestibulum porta pellentesque ligula sed consequat.
+            .project__cta
+              a.button.button--slide.bg--primary.dark-gray(href="../contacto.html")
+                span Contáctanos
+                span.button__icon.bg--secondary
+                  img(src="../assets/images/icons/buttons/envelope-white.svg" alt="")
+
+    // banner 
+    section.banner.bg--primary
+      .banner__container
+        .banner__row.no-gutter
+          .col-xs-12
+            .banner__content
+              p.banner__text
+                |Solicita una cotización con solo llamar o escribir
+              a.button.button--slide.bg--secondary.white(href="./contacto.html")
+                span Cotizar ahora
+                span.button__icon.bg--primary
+                  img(src="../assets/images/icons/buttons/receipt.svg" alt="")
+
+    // footer 
+    include ../partials/footer-project.pug
+
+    // whatsapp 
+    include ../partials/whatsapp-project.pug

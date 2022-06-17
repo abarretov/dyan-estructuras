@@ -1,71 +1,233 @@
 doctype html
-html(lang="en")
+html(lang="es")
   head
     meta(charset="utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    title Contact number by phone, contact phone number uk, helpline, customer service
-    meta(name="description" content="Your customer service and contact phone number in uk, 24 hour customer service number.")
+    title D'yan Estructuras
+    meta(name="description" content="")
     link(rel="icon" type="image/png" href="./assets/images/favicon.png")
     // build:css css/main.min.css 
     link(rel="stylesheet" href="./css/main.css")
     // endbuild 
-  body
+    script(src="./js/lib/siema.min.js" defer)
+    // build:js js/global.min.js defer 
+    script(src="./js/helpers/utils.js" defer)
+    script(src="./js/helpers/variables.js" defer)
+    script(src="./js/helpers/numbers.js" defer)
+    script(src="./js/set-vh.js" defer)
+    script(src="./js/preloader.js" defer)
+    script(src="./js/menu.js" defer)
+    script(src="./js/show-whatsapp.js" defer)
+    // endbuild 
+    // build:js js/main.min.js defer 
+    script(src="./js/smooth-scroll-to-element-on-anchor-tag.js" defer)
+    script(src="./js/global-sliders.js" defer)
+    script(src="./js/simple-slider-fadeout-effect.js" defer)
+    script(src="./js/show-and-hide-event-with-mouseover.js" defer)
+    script(src="./js/show-hide-sliders-projects.js" defer)
+    script(src="./js/carousel.js" defer)
+    script(src="./js/index.js" defer)
+    // endbuild 
+  body.freeze
+
+    // preloader 
+    include partials/preloader.pug
 
     // header 
-    include includes/header.pug
+    include partials/header.pug
 
     // hero 
-    include includes/hero.pug
-    
-    // important information 
-    section.wrapper
-      .container
-        .row
-          .box.box--sm.box--lg
-            h2.heading.
-              We are an information service and telephone help not associated with any public or private company
-            p.text.
-              We can inform you about the service of your choice thanks to our database updated periodically. If you are looking for the amount of customer service from your provider, we can provide it in the same way as your favorite e-commerce site.
-            p.text.
-              It is not necessary to find the correct number of customer service you need, we will inform you immediately of the correct contact number.
-            p.text.
-              Get more information on how to get in touch Attention, some brands may not make a contact number available to their customers, in which case we will inform you of an email address or an account on the networks. Social.
-            p.text
-              |You can search us, wiht this keywords: 
-              b call, contact number, contact by phone, contact phone number, contact number uk, helpline, customer service, customer service number, customer service phone, customer service telephone number, customer service phone number, customer service phone number uk, customer service number uk, customer service uk, contact phone number uk, 24 hour customer service number, contact number uk, telephone number, phone number.
+    section.hero
+      .hero__wrapper.slide
+        .hero__container
+          .hero__row.no-gutter
+            .col-xs-12.col-md-9
+              .hero__content
+                h1.hero__title ¡Planifica, innova y diseña tus proyectos con nosotros!
+                p.hero__subtitle Nos especializamos en el desarrollo integral de proyectos civiles e industriales utilizando herramientas BIM
+                .hero__cta
+                  a.button.button--slide.bg--primary.dark-gray.scroll-trigger(href="#servicios")
+                    span Servicios
+                    span.button__icon.bg--secondary
+                      img(src="./assets/images/icons/buttons/calculator.svg" alt="")
+                  a.button.button--slide.bg--secondary.white.scroll-trigger(href="#proyectos")
+                    span Proyectos
+                    span.button__icon.bg--primary
+                      img(src="./assets/images/icons/buttons/folder-open.svg" alt="")
+      .hero__wrapper.slide
+        .hero__container
+          .hero__row.no-gutter
+            .col-xs-12.col-md-9
+              .hero__content
+                h1.hero__title ¡Edifica, construye y vive la integridad de tu inmueble!
+                p.hero__subtitle Nos importa brindarte seguridad y bienestar en todos tus espacios, priorizando calidad a un cómodo costo
+                .hero__cta
+                  a.button.button--slide.bg--primary.dark-gray.scroll-trigger(href="#servicios")
+                    span Servicios
+                    span.button__icon.bg--secondary
+                      img(src="./assets/images/icons/buttons/calculator.svg" alt="")
+                  a.button.button--slide.bg--secondary.white.scroll-trigger(href="#proyectos")
+                    span Proyectos
+                    span.button__icon.bg--primary
+                      img(src="./assets/images/icons/buttons/folder-open.svg" alt="")
+      .hero__wrapper.slide
+        .hero__container
+          .hero__row.no-gutter
+            .col-xs-12.col-md-9
+              .hero__content
+                h1.hero__title ¡Soluciones y propuestas adaptadas a tus necesidades!  
+                p.hero__subtitle Nos carecterizamos por hacer de tus sueños e ideas los nuestros, para que puedas llevarlos del papel al concreto
+                .hero__cta
+                  a.button.button--slide.bg--primary.dark-gray.scroll-trigger(href="#servicios")
+                    span Servicios
+                    span.button__icon.bg--secondary
+                      img(src="./assets/images/icons/buttons/calculator.svg" alt="")
+                  a.button.button--slide.bg--secondary.white.scroll-trigger(href="#proyectos")
+                    span Proyectos
+                    span.button__icon.bg--primary
+                      img(src="./assets/images/icons/buttons/folder-open.svg" alt="")
 
-    // features 
-    section.wrapper.bg--very-light-gray
-      .container
-        .row
-          .box.box--sm.box--xl
-            include includes/features.pug
-  
-    section.wrapper
-      .container
-        .row
-          .box.box--sm.box--lg
-            h2.heading FAQ about our services
-            p.text.text--bold Can you find Residential Telephone Numbers &amp; Addresses?
-            p.text.text--bordered Yes, we can search for UK residential telephone numbers by name and location.
-            p.text.text--bold Can you find Business Telephone Numbers &amp; Addresses?
-            p.text.text--bordered Yes, we can search for UK businesses by name or type of business and location.
-            p.text.text--bold Can you connect/transfer me to the telephone number?
-            p.text.text--bordered Yes. The cost of the call would continue at the same rate as calling 118202.
-            p.text.text--bold What hours do you operate?
-            p.text.text--bordered Our lines are open 24 hours a day.
-            p.text.text--bold Who answers the calls?
-            p.text.text--bordered All calls are answered by our trained staff who are based in our offices in the UK.
-            p.text.text--bold How much does it cost to call?
-            p.text.text--bordered Calls to 118202 cost £2.00 per minute, (minimum charge £2.00), plus your phone company’s access charge.
-            p.text.text--bold Can you text me?
-            p.text.text--bordered At present we can either read out the telephone number (or other information) to you, or connect/transfer you. Calls to 118202 cost £2.00 per minute, (minimum charge £2.00), plus your phone company’s access charge.
+    // intro 
+    section.intro
+      .siema
+        img.siema__img.siema__img--full(src="./assets/images/intro/first-layout.jpg" alt="")
+        img.siema__img.siema__img--full(src="./assets/images/intro/second-layout.jpg" alt="")
+        img.siema__img.siema__img--full(src="./assets/images/intro/third-layout.jpg" alt="")
+        img.siema__img.siema__img--full(src="./assets/images/intro/fourth-layout.jpg" alt="")
+      .intro__wrapper
+        .intro__container
+          .intro__features
+            .item
+              .item__icon
+                img(src="./assets/images/icons/highlights/timer.svg" alt="")
+              .item__content
+                p.item__title Puntuales
+                p.item__text Cumplimos con los plazos establecidos
+            .item
+              .item__icon
+                img(src="./assets/images/icons/highlights/world.svg" alt="")
+              .item__content
+                p.item__title Globales
+                //- p.item__text Llegamos al lugar sin importar la distancia
+                p.item__text No importa el lugar, allí estaremos
+            .item
+              .item__icon
+                img(src="./assets/images/icons/highlights/handshake.svg" alt="")
+              .item__content
+                p.item__title Atentos
+                p.item__text Priorizamos todas tus necesidades
+            .item
+              .item__icon
+                img(src="./assets/images/icons/highlights/coin-stack.svg" alt="")
+              .item__content
+                p.item__title Accesibles
+                p.item__text La mejor relación calidad/precio
+          .intro__content
+            h2.intro__title.
+              ¿Estás buscando con quién fabricar tus pergolas o mezzaninas?
+            p.intro__text.
+              Te ofrecemos diseño y construcción envueltos con innovación y creatividad para ese espacio que necesitas en tu hogar.
+            .intro__cta.mobile-only
+              a.button.button--slide.bg--primary.dark-gray(href="./contacto.html")
+                span Contáctanos
+                span.button__icon.bg--secondary
+                  img(src="./assets/images/icons/buttons/envelope-white.svg" alt="")
+            .intro__buttons
+              button.prev
+              button.next
+          //- .intro__cta.desktop-only
+          //-   a.button.button--slide.bg--primary.dark-gray(href="./#servicios")
+          //-     span Contáctanos
+          //-     span.button__icon.bg--secondary
+          //-       img(src="./assets/images/icons/envelope-white.svg" alt="")
 
-    // cta 
-    include includes/cta.pug
+    // services 
+    section#servicios.services
+      img.show(src="./assets/images/services/under-construction.jpg" alt="")
+      img(src="./assets/images/services/man-working.jpg" alt="")
+      img(src="./assets/images/services/construction-site.jpg" alt="")
+      img(src="./assets/images/services/pave.jpg" alt="")
+      .services__container
+        .services__row.no-gutter
+          .col-xs-12.col-md-7
+            .services__content
+              .services__info
+                .services__title
+                  h2.show Consultoría
+                  h2 Estudios de pre-inversión e inversión
+                  h2 Gestión y planificación
+                  h2 Modelado BIM
+                .services__description
+                  div.show 
+                    p.services__text En D’yan Estructuras te ofrecemos consultoría especializada en el desarrollo integral de proyectos de edificaciones y del sector industrial incluyendo todas las fases involucradas y el soporte técnico en las siguientes disciplinas:
+                    ul.services__list
+                      li Arquitectura
+                      li Ingeniería Estructural
+                      li Ingeniería de Instalaciones
+                  div
+                    p.services__text Contamos con amplia experiencia en la elaboración de expedientes técnicos para proyectos de inversión pública y/o privada, entre las cuales tenemos:
+                    ul.services__list
+                      li Urbanismo y paisajismo
+                      li Vialidad y carreteras
+                      li Centros educativos
+                  div
+                    p.services__text Te brindamos la elaboración de proyectos a nivel presupuestal para su futura ejecución y/o inversión con la especialidad de metadatos, costos y planificación de obras.
+                  div
+                    p.services__text Llevamos a cabo la realización de planos y levantamiento con visualización 3D usando herramientas de última generación, incorporando la metodología BIM en todas nuestras especialidades...
+              .services__buttons
+                button.show Consultoría de proyectos
+                button Elaboración de estudios
+                button Elaboración de expedientes
+                button Modelado BIM
+
+    // projects
+    include partials/projects.pug
+
+    // about 
+    include partials/about.pug
+
+    // clients 
+    section
+      .wrapper
+        .container
+          .row.no-gutter
+            .col-xs-12
+              .siema-clients
+                .siema-clients__child
+                  img(src="./assets/images/clients/gbc.svg" alt="")
+                .siema-clients__child
+                  img(src="./assets/images/clients/gc.svg" alt="")
+                .siema-clients__child
+                  img(src="./assets/images/clients/glb.svg" alt="")
+                .siema-clients__child
+                  img(src="./assets/images/clients/la-vitrina.png" alt="Logo de La Vitrina")
+                .siema-clients__child
+                  img(src="./assets/images/clients/montoro-pereyra.jpg" alt="Logo de Montoro Pereyra Ingenieros")
+                .siema-clients__child
+                  img(src="./assets/images/clients/eletcol.png" alt="Logo de Eletcol")
+                .siema-clients__child
+                  img(src="./assets/images/clients/et.svg" alt="")
+                .siema-clients__child
+                  img(src="./assets/images/clients/hnk.svg" alt="")
+
+    // testimonials 
+    include partials/testimonials.pug
+
+    // banner 
+    section.banner.bg--primary
+      .banner__container
+        .banner__row.no-gutter
+          .col-xs-12
+            .banner__content
+              p.banner__text
+                |Solicita una cotización con solo llamar o escribir
+              a.button.button--slide.bg--secondary.white(href="./contacto.html")
+                span Contáctanos
+                span.button__icon.bg--primary
+                  img(src="./assets/images/icons/buttons/envelope-dark-gray.svg" alt="")
 
     // footer 
-    include includes/footer.pug
+    include partials/footer.pug
 
-    // scripts 
-    include includes/scripts.pug
+    // whatsapp 
+    include partials/whatsapp.pug

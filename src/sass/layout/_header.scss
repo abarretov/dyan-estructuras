@@ -1,38 +1,72 @@
 .header {
-  box-shadow: 0 1px 6px $black;
   z-index: 99;
+  position: fixed;
+  top: 0;
+  box-shadow: 0 1px 6px $black;
+  width: 100%;
+  transition: 0.4s ease;
+  // set the header sticky on desktop
+  @include respond-to(large) {
+    position: sticky;
+    top: -30px;
+  }
+  // set the background to the header
+  & .wrapper:nth-child(2) {
+    background: $white;
+    transition: 0.4s ease;
+  }
+  // set the position absolute
+  &--abs {
+    & .wrapper:nth-child(2) {
+      @include respond-to(large) {
+        position: absolute;
+        background: transparent;
+      }
+    }
+  }
+  // hides the background and box-shadow when the menu is visible (mobile only)
+  &--hide {
+    box-shadow: 0 1px 6px transparent;
+    // set the background to the header on desktop
+    & .wrapper:nth-child(2) {
+      background: $transparent;
+    }
+  }
   &__top {
     display: none;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
-    height: 30px;
     @include respond-to(large) {
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 30px;
     }
-    & a, & a::after {
-      color: $dark-gray;
+  }
+  &__contact-info {
+    display: flex;
+    align-items: center;
+    & a {
+      display: flex;
+      margin-right: 50px;
+      color: $white;
       font-size: 14px;
       font-weight: 500;
-      line-height: 1;
-    }
-    & a {
-      position: relative;
-      padding: 0 2%;
-      display: flex;
-      align-items: center;
-      &:first-child::after {
-        position: absolute;
-        top: -2px;
-        right: -2px;
-        content: '|';
-      }
+      letter-spacing: 1px;
       &:last-child {
-        padding-right: 0;
+        margin-right: 0;
+      }
+      & img {
+        margin-right: 10px;
       }
     }
-    & i {
+  }
+  &__social-icon {
+    display: flex;
+    & a {
       margin-right: 10px;
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
   &__bottom {
@@ -41,6 +75,11 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 60px;
+    height: 70px;
+    transition: 0.4s ease;
+    // shrink the header on desktop when scrolling
+    &--shrink {
+      height: 56px;
+    }
   }
 }

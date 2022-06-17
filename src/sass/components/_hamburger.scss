@@ -1,0 +1,63 @@
+.hamburger {
+  position: absolute;    
+  top: 50%;
+  transform: translateY(-50%);
+  right: calc($gutter / 2);
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  user-select: none;
+  z-index: 101;
+  @include respond-to(small) {
+    right: 0;
+  }
+  @include respond-to(large) {
+    display: none;
+  }
+  &--active .hamburger__icon {
+    right: 5px;
+    box-shadow: 1px 1px 1px $transparent;
+    width: 20px;
+    background: transparent;
+  }
+  &--active .hamburger__icon::before, &--active .hamburger__icon::after {
+    top: 0;
+    box-shadow: 1px 1px 1px $transparent;
+    width: 35px;
+    background-color: $primary;
+  }
+  &--active .hamburger__icon::before {
+    transform: rotate(-45deg);
+  }
+  &--active .hamburger__icon::after {
+    transform: rotate(45deg);
+  }
+  &__icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    box-shadow: 1px 1px 1px $black-transparent;
+    width: 40px;
+    height: 5px;
+    background-color: $primary;
+    transition: 0.3s ease-out;
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      box-shadow: 1px 1px 1px $black-transparent;
+      width: 45px;
+      height: 5px;
+      background-color: $primary;
+      transition: 0.3s ease-out;
+    }
+    &::before {
+      top: 11px;
+      right: 0;
+    }
+    &::after {
+      top: -11px;
+      right: 0;
+    }
+  }
+}

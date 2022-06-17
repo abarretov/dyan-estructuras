@@ -1,0 +1,180 @@
+.siema {
+	&__img {
+		width: 100%;
+		height: 100vh; // fallback for browsers that do not support Custom Properties
+  	height: calc(var(--vh, 1vh) * 100);
+		object-fit: cover;
+		filter: brightness(0.9);
+	  @include respond-to(large) {
+	    height: calc(100vh - 100px); // fallback for browsers that do not support Custom Properties
+  		height: calc((var(--vh, 1vh) * 100) - 100px);
+	  	max-height: 768px;
+	  }
+	  &--full {
+	  	@include respond-to(large) {
+	  		height: 600px;
+	  	}
+	  }
+	  &--brightness {
+	  	object-fit: contain;
+	  	filter: brightness(1);
+	  }
+		&--cover {
+			object-fit: cover;
+			object-position: bottom;
+			height: 100vh; // fallback for browsers that do not support Custom Properties
+			height: calc(var(--vh, 1vh) * 100);
+			max-height: unset;
+			@include respond-to(large) {
+			}
+		}
+	}
+	&-clients {
+		display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    @include respond-to(small) {
+    	margin: 0 calc($gutter / 2 * -1);
+    	display: inherit;
+    	flex-wrap: unset;
+    	justify-content: unset;
+    }
+    @include respond-to(large) {
+    	margin: 0;
+    }
+		&__child {
+			margin: 0 20px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 80px;
+			height: 110px;
+			@include respond-to(tiny) {
+				width: 100px;
+				height: 130px;
+			}
+			@include respond-to(extra-small) {
+				width: 120px;
+				height: 150px;	
+			}
+			@include respond-to(small) {
+				margin: 0 25px;
+				width: 130px;
+				height: 150px;
+			}
+		}
+		& img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+	}
+	&-project {
+		height: 100vh; // fallback for browsers that do not support Custom Properties
+  	height: calc(var(--vh, 1vh) * 100);
+	}
+}
+
+.prev, .next, .projects__prev, .projects__next {
+	position: relative;
+  box-shadow: 1px 1px 3px $black-transparent;
+	border-radius: 30px;
+	width: 60px;
+  height: 60px;
+	background-repeat: no-repeat;
+	background-size: 50px 50px;
+	background-position: center;
+	transition: 0.2s linear 0s;
+  overflow: hidden;
+  @include respond-to(large) {
+		border-radius: 3px;
+		background-size: 25px 25px;
+  	width: 80px;
+  	height: 40px;
+  	&:hover {
+			background-position: 40% center;
+			&::before {
+				background-position: 60% center;
+			}
+		}
+  }
+  &--invert {
+  	@include respond-to(large) {
+  		width: 40px;
+  		height: 70px;
+  		&:hover {
+  			background-position: center;
+  		}
+  		&::before {
+  			display: none;
+  		}
+  	}
+  }
+  &::before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		border-radius: 3px;
+		width: 80px;
+	  height: 40px;
+		background-repeat: no-repeat;
+		background-size: 25px 25px;
+		background-position: center;
+		transition: 0.2s linear 0s;
+		@include respond-to(large) {
+			content: '';
+		}
+	}
+}
+
+.prev, .projects__prev {
+	margin-left: 30px;
+	background-color: $secondary-transparent;
+	background-image: url('../assets/images/siema/arrow-left.svg');
+	@include respond-to(large) {
+		margin-left: 0;
+		margin-right: 20px;
+		background-color: $secondary;
+	}
+	&::before {
+		background-image: url('../assets/images/siema/arrow-left.svg');
+	}
+}
+
+.next, .projects__next {
+	margin-right: 30px;
+	background-color: $primary-transparent;
+	background-image: url('../assets/images/siema/arrow-right.svg');
+	@include respond-to(large) {
+		margin-right: 0;
+		background-color: $primary;
+	}
+	&::before {
+		background-image: url('../assets/images/siema/arrow-right.svg');
+	}
+}
+
+.dots {
+	z-index: 1;
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  justify-content: center;
+	&__item {
+	  cursor: pointer;
+	  outline: 0;
+	  box-shadow: 0 0 1px $black-transparent inset;
+	  margin: 0 .5rem;
+	  border: 0;
+	  border-radius: 50%;
+	  width: 15px;
+	  height: 15px;
+	  background-color: $secondary-transparent;
+	  transition: 0.4s;
+		&--active {
+		  background: $primary-transparent;
+		}
+	}
+}

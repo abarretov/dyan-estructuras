@@ -1,0 +1,147 @@
+.card {
+	padding-top: 40px;
+	display: flex;
+	flex-flow: column nowrap;
+	@include respond-to(large) {
+		padding-top: 80px;
+		width: 180px;
+	}
+	&--main {
+		flex-flow: row wrap;
+		width: auto;
+		@include respond-to(large) {
+			flex-flow: row nowrap;
+		}
+		& .card__content {
+			justify-content: center;
+		}
+	}
+	// reverse the stacking order
+	&--reverse {
+		flex-wrap: wrap-reverse;
+		@include respond-to(large) {
+			flex-wrap: unset;
+		}
+	}
+	&__content {
+		display: flex;
+		flex-flow: column nowrap;
+		width: auto;
+		text-shadow: 1px 1px 2px $black-transparent;
+		// aligns all the content of the elements to the right
+		&--right {
+			@include respond-to(large) {
+				* {
+					text-align: right;
+				}
+			}
+		}
+	}
+	&__name, &__charge {
+		color: $primary;
+		font-weight: 500;
+	}
+	&__charge, &__resume, &__more, &__info {
+		margin-bottom: 10px;
+		line-height: 1.2;
+  }
+	&__resume, &__more, &__info {
+  	font-weight: 300;
+	}
+	&__name {
+		margin: 10px 0;
+		font-size: 28px;
+		@include respond-to(large) {
+			margin-top: 0;
+		}
+		&--tiny {
+			@include respond-to(large) {
+				margin-top: 10px;
+				font-size: 24px;
+			}
+		}
+	}
+	&__info {
+		list-style-type: none;
+	}
+	&__data {
+		position: relative;
+		margin-bottom: 10px;
+		padding-left: 25px;
+		@include respond-to(large) {
+			padding-right: 25px;
+		}
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 20px;
+			height: 20px;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: 20px;
+			filter: drop-shadow(1px 1px 2px $black-transparent);
+			@include respond-to(large) {
+				left: unset;
+				right: 0;
+			}
+		}
+		&:last-child {
+			margin-bottom: 0;
+		}
+		&--left {
+			padding-right: 0;
+			padding-left: 25px;
+			&::before {
+				right: unset;
+				left: 0;
+			}
+		}
+		&--mail {
+			&::before {
+				background-image: url('../assets/images/icons/contact/at.svg');
+			}
+		}
+		&--phone {
+			&::before {
+				background-image: url('../assets/images/icons/contact/mobile.svg');
+			}
+		}
+	}
+	&__img {
+		cursor: pointer;
+		border-radius: 0;
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+		@include respond-to(large) {
+			border-radius: 3px;
+			width: 180px;
+			height: 216px;
+			filter: grayscale(1);
+			transition: 0.4s ease;
+		}
+		&--main {
+			@include respond-to(large) {
+				width: 230px;
+				height: 276px;
+			}
+		}
+		&--margin {
+			&-left {
+				@include respond-to(large) {
+					margin-left: 20px;
+				}
+			}
+			&-right {
+				@include respond-to(large) {
+					margin-right: 20px;
+				}
+			}
+		}
+		&:hover {
+			filter: grayscale(0);
+		}
+	}
+}

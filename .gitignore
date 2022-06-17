@@ -1,4 +1,6 @@
-build
-public
+info
 node_modules
+build
+.js-cache
+.scss-cache
 .env.development

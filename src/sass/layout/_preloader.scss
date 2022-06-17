@@ -1,0 +1,153 @@
+.preloader {
+  z-index: 103;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; // fallback for browsers that do not support Custom Properties
+  width: calc(var(--vw, 1vw) * 100);
+  height: 100vh; // fallback for browsers that do not support Custom Properties
+  height: calc(var(--vh, 1vh) * 100);
+  background-color: $tertiary;
+  transition: 0.4s ease-in;
+  &__content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -120%;
+      left: -120%;
+      border-radius: 0 100% 0 0;
+      // only supported in dark-sass that is why we need to use string interpolation
+      width: #{'max(130vh, 130vw, 100%)'};
+      height: #{'max(130vh, 130vw, 100%)'};
+      background-color: $white;
+      transition: 0.6s;
+    }
+    &.loaded {
+      &::before {
+        left: 0%;
+        bottom: 0%;
+      }
+    }
+  }
+  #logoWhite {
+    path:nth-child(6) {
+      animation: flashlight 2.2s 0.1s linear infinite;
+    }
+    path:nth-child(7) {
+      animation: flashlight 2.2s 0.3s linear infinite;
+    }
+    path:nth-child(8) {
+      animation: flashlight 2.2s 0.5s linear infinite;
+    }
+    path:nth-child(9) {
+      animation: flashlight 2.2s 0.7s linear infinite;
+    }
+    path:nth-child(10) {
+      animation: flashlight 2.2s 0.8s linear infinite;
+    }
+    path:nth-child(11) {
+      animation: flashlight 2.2s 0.1s linear infinite;
+    }
+    path:nth-child(12) {
+      animation: flashlight 2.2s 0.3s linear infinite;
+    }
+    path:nth-child(13) {
+      animation: flashlight 2.2s 0.5s linear infinite;
+    }
+    path:nth-child(14) {
+      animation: flashlight 2.2s 0.7s linear infinite;
+    }
+    path:nth-child(15) {
+      animation: flashlight 2.2s 0.8s linear infinite;
+    }
+    path:nth-child(16) {
+      animation: flashlight 2.2s 0.9s linear infinite;
+    }
+    path:nth-child(1) {
+      animation: flashlight 2.2s 0.3s linear infinite;
+    }
+    path:nth-child(2) {
+      animation: flashlight 2.2s 0.4s linear infinite;
+    }
+    path:nth-child(3) {
+      animation: flashlight 2.2s 0.6s linear infinite;
+    }
+    path:nth-child(4) {
+      animation: flashlight 2.2s 0.7s linear infinite;
+    }
+    path:nth-child(5) {
+      animation: flashlight 2.2s 0.9s linear infinite;
+    }
+  }
+  #logoBlue {
+    z-index: -1;
+    overflow: auto;
+    position: absolute;
+    transition: 0.4s;
+    &Letter {
+      transition: 0.4s;
+    }
+    &.loaded {      
+      z-index: 1;
+      #logoBlueLetter {
+        fill: $primary;
+      }
+    }
+    &.hide {
+      path:nth-child(6) {        
+        animation: stoplight 0.6s linear;
+      }
+      path:nth-child(7) {
+        animation: stoplight 0.6s 0.1s linear;
+      }
+      path:nth-child(8) {
+        animation: stoplight 0.6s 0.15s linear;
+      }
+      path:nth-child(9) {
+        animation: stoplight 0.6s 0.2s linear;
+      }
+      path:nth-child(10) {
+        animation: stoplight 0.6s 0.25s linear;
+      }
+      path:nth-child(11) {
+        animation: stoplight 0.6s 0.3s linear;
+      }
+      path:nth-child(12) {
+        animation: stoplight 0.6s 0.35s linear;
+      }
+      path:nth-child(13) {
+        animation: stoplight 0.6s 0.4s linear;
+      }
+      path:nth-child(14) {
+        animation: stoplight 0.6s 0.45s linear;
+      }
+      path:nth-child(15) {
+        animation: stoplight 0.6s 0.5s linear;
+      }
+      path:nth-child(16) {
+        animation: stoplight 0.6s 0.55s linear;
+      }
+      path:nth-child(1) {
+        animation: stoplight 0.6s linear;
+      }
+      path:nth-child(2) {
+        animation: stoplight 0.6s 0.1s linear;
+      }
+      path:nth-child(3) {        
+        animation: stoplight 0.6s 0.3s linear;
+      }
+      path:nth-child(4) {
+        animation: stoplight 0.6s 0.4s linear;
+      }
+      path:nth-child(5) {
+        animation: stoplight 0.6s 0.5s linear;
+      }
+    } 
+  }
+}

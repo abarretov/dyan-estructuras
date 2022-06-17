@@ -1,49 +1,256 @@
 .form {
-  padding: 10% 5% 0;
-  @include respond-to(small) {
-    padding: 5% 5%;
-  }
+  z-index: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  color: $white;
   @include respond-to(large) {
-    padding: 2% 5% 5%;
+    flex-flow: row wrap;
+    justify-content: space-between;
   }
   &__group {
+    position: relative;
     display: flex;
     flex-flow: column nowrap;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+    @include respond-to(large) {
+      margin-bottom: 15px;
+    }
+    // to configure the first four inputs
+    &:nth-child(-n + 4) {
+      width: 100%;
+      @include respond-to(large) {
+        width: 48%;
+      }
+    }
+    // to configure the textarea
+    &:nth-child(6) {
+      & label {
+        margin-bottom: 10px;
+      }
+    }
+    // to configure the checkbox
+    &:nth-child(7) {
+      flex-flow: row nowrap;
+      & input {
+        width: auto;
+      }
+    }
+    // to configure the last input
     &:last-child {
       margin-bottom: 0;
     }
-  }
-  &__button {
-    border-radius: 3px;
-    padding: 12px 0;
-    width: 90px;
-    color: $white;
-    font-weight: 700;
+    &--required {
+      &::before {
+        content: '*';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        color: $primary;
+      }
+    }
+    &--tiny {
+      font-size: 14px;
+      letter-spacing: 1px;
+      & span {
+        color: $primary;
+      }
+    }
     &--submit {
-      background-color: $bright-orange;
+      flex-flow: row nowrap;
+      align-items: center;
     }
   }
   & label {
-    display: block;
     width: 100%;
-    line-height: 1;
-    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px $black-transparent;
+    @include respond-to(small) {
+      font-size: 18px;
+      text-shadow: none;
+    }
+    & a {
+      color: $white;
+      &:hover {
+        color: $white;
+      }
+    }
+    & span {
+      color: $primary;
+    }
   }
   & input, textarea {
-    border: 1px solid $light-gray;
-    border-radius: 3px;
-    padding: 3% 2%;
-    @include placeholder() {
-      color: $dark-gray;
-      background-color: $light-gray;
+    width: 100%;
+    background-color: $transparent;
+    color: $white;
+    font-family: $barlow-semi-condensed;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    text-shadow: 1px 1px 2px $black-transparent;
+    @include respond-to(extra-large) {
+      font-size: 18px;
+      text-shadow: none;
     }
-    @include respond-to(small) {
-      padding: 10px;
+    @include placeholder() {
+      background-color: $transparent;
+      color: $white;
+      font-family: $barlow-semi-condensed;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.6px;
+      text-shadow: 1px 1px 2px $black-transparent;
+      @include respond-to(extra-large) {
+        font-size: 18px;
+        text-shadow: none;
+      }
+    }
+    &:focus {
+      border-color: $primary;
+    }
+  }
+  & input {
+    border: none;
+    border-bottom: 1px solid $white;
+    padding-bottom: 6px;
+    &.test-active {
+      &[required]:invalid {
+        color: $primary;
+        @include placeholder() {
+          color: $primary;
+        }
+      }
+      &[required]:valid {
+        color: $white;
+        @include placeholder() {
+          color: $white;
+        }
+      }
+    }
+    // styling the checkbox
+    &[type*="checkbox"] {
+      position: relative;
+      appearance: none;
+      cursor: pointer;
+      outline: none;
+      margin: auto 10px;
+      margin-left: 0;
+      border: 1px solid $white;
+      border-radius: 2px;
+      height: 16px;
+      width: 16px;
+      background-color: $white;
+      text-shadow: none;
+      transition: 0.3s;
+      &::before {
+        opacity: 0;
+        content: '\2713'; // check icon
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        color: $dark-gray;
+        font-size: 10px;
+        font-weight: 700;
+      }
+      &:checked {
+        background-color: $primary;
+        &::before {
+          opacity: 1;
+        }
+      }
     }
   }
   & textarea {
-    min-height: 80px;
-    resize: vertical;
+    border: 1px solid $white;
+    border-radius: 3px;
+    min-height: 90px;
+    resize: none;
+    @include respond-to(small) {
+      min-height: 60px;
+    }
+    @include respond-to(extra-large) {
+      min-height: 90px;
+    }
+    &.test-active {
+      &[required] {
+        color: $primary;
+        @include placeholder() {
+          color: $primary;
+        }
+      }
+    }
+  }
+  &__button {
+    position: relative;
+    box-shadow: 6px 6px $black-transparent;
+    margin-top: 10px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 50px;
+    background-color: $primary;
+    color: $dark-gray;
+    font-family: $barlow-semi-condensed;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    &:hover {
+      top: 3px;
+      box-shadow: 3px 3px 0 $black-transparent;
+    }
+    & img {
+      margin-right: 10px;
+      width: 30px;
+      height: 30px;
+    }
+  }
+  &__message {
+    border-radius: 3px;
+    padding: 5px;
+    text-shadow: 1px 1px 3px $black-transparent;
+    // make invisible the elements
+    display: none;
+    opacity: 0;
+    // make visible the elements
+    &.show {
+      animation: fadefromnone 0.4s linear forwards;
+      display: block; // prevent the display reverts back to none after the opacity animation runs
+    }
+    /* purgecss start ignore */
+    &--success {
+      background-color: $success;
+    }
+    &--failed {
+      background-color: $error;
+    }
+    /* purgecss end ignore */
+  }
+  &__loading {
+    display: none;
+    margin-top: 15px;
+    margin-left: 25px;
+    &--active {
+      display: block;
+    }
+    & img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+}
+
+#labelPolitics {
+  font-weight: 300;
+  & a {
+    font-weight: 500;
   }
 }

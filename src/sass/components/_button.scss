@@ -1,63 +1,71 @@
-.btn {
+.button {
   position: relative;
-  margin: auto;
-  border-radius: 35px;
-  padding: 0 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90%;
-  max-width: 330px;
-  height: 65px;
-  background-color: $bright-orange;
-  color: $white;
-  font-family: $open-sans;
-  font-size: 1.5rem;
-  font-weight: 700;
+  border-radius: 3px;
+  min-width: 180px;
+  height: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;  
   text-decoration: none;  
-  box-shadow: 6px 6px $strong-orange;
-  @include respond-to(extra-small) {
-    font-size: 1.8rem;
-    height: 75px;
+  box-shadow: 1px 1px 3px $black-transparent;
+  overflow: hidden;
+  transition: 0.4s ease-in-out;
+  @include respond-to(small) {
+    margin-right: 30px;
+    height: 40px;
   }
-  @include respond-to(medium) {
-    font-size: 2.3rem;
-    padding: 0 10px;
-    max-width: 380px;
-    height: 90px;
-  }
-  @include respond-to(large) {
-    margin: unset;
-    font-size: 2rem;
-    padding: 0 5px;
-    max-width: 330px;
-    height: 65px;
-  }
-  & i {
-    margin-right: 10px;
-  }
-  &:hover {
-    top: 3px;
-    box-shadow: 3px 3px 0 $strong-orange;
-  }
-  &--shine {
-    overflow: hidden;
-    &::after {
-      @include respond-to(large) {
-        position: absolute;
-        top: 0;
-        left: -100%;
-        content: '';
-        width: 100%;
-        height: 100%;
-        background-image: linear-gradient(90deg, transparent, $white-transparent, transparent);
-        transition: 0.5s;
-      }
+  &:first-child {
+    margin-bottom: 25px;
+    @include respond-to(small) {
+      margin-bottom: 0;
     }
-    &:hover::after {
+  }
+  &--slide {
+    & span, & .button__icon {
+      transition: all 0.2s linear 0s;
+    }
+    & .button__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      right: -40px;
+      width: 40px;
+      height: 100%;
+    }
+    &:hover {
       @include respond-to(large) {
-        left: 100%;  
+        & span {
+          text-indent: -30px;
+        }
+        & .button__icon {
+          right: 0;
+        }
       }
     }
   }
+  // &--shine {
+  //   overflow: hidden;
+  //   &::after {
+  //     @include respond-to(large) {
+  //       position: absolute;
+  //       top: 0;
+  //       left: -100%;
+  //       content: '';
+  //       width: 100%;
+  //       height: 100%;
+  //       background-image: linear-gradient(90deg, transparent, $white-transparent, transparent);
+  //       transition: 0.5s;
+  //     }
+  //   }
+  //   &:hover::after {
+  //     @include respond-to(large) {
+  //       left: 100%;  
+  //     }
+  //   }
+  // }
 }

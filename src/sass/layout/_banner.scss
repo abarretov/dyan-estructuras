@@ -1,0 +1,46 @@
+.banner {
+  z-index: 1;
+  @extend %wrapper;
+  &__container {
+    @extend %container;
+  }
+  &__row {
+    @extend %row;
+    padding: 60px 0;
+    @include respond-to(small) {
+      padding: 10px 0;
+    }
+  }
+  &__content {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    @include respond-to(small) {
+      flex-flow: row nowrap;
+      justify-content: space-between;
+    }
+  }
+  &__text {
+    padding-bottom: 30px;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 1px;
+    text-align: center;
+    @include respond-to(small) {
+      padding-bottom: 0;
+      font-size: 20px;
+      text-align: left;
+    }
+    @include respond-to(large) {
+      font-size: 40px;
+    }
+    & span {
+      color: transparent;
+      -webkit-text-stroke: 2px $dark-gray;
+    }
+  }
+  & a.button {
+    margin-right: 0;
+  }
+}

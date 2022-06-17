@@ -1,32 +1,27 @@
 // =============================================================================
 // Gulp task: server
-// Description: Start server
+// Description: Start browsers sync and server
 // =============================================================================
 // Packages
-//   gulp / gulp-connect-php / gulp-load-plugins / browser-sync
+//   gulp / gulp-load-plugins / browser-sync / gulp-connect-php
 // =============================================================================
 
-module.exports = function(gulp, plugins, config) {
-  let stream
-  function connect(config_php_connect, config_browsersync) {
-    switch (process.env.FILES_TYPE) {
-      case 'php':
-        stream = plugins.phpSync.server(config_php_connect, function() {
-          plugins.browserSync.init(config_browsersync)
-        })
-        break
-      default:
-        stream = plugins.browserSync.init(config_browsersync)
-    }
-  }
-  return function() {
+module.exports = (gulp, packages, config) => {
+  return (cb) => {
 // ------------------------------------------------------------------ Start Task
-    if (process.env.NODE_ENV === 'production') {
-      connect(config.phpsync.opts.prod, config.browsersync.opts.prod)
+    if (process.env.NODE_ENV !== 'production') {
+      // var server = packages.browserSync.init(config.browsersync.opts.dev)
+      var server = packages.php.server(config.php.opts.dev, () => {
+        packages.browserSync.init(config.browsersync.opts.dev)
+      })
     } else {
-      connect(config.phpsync.opts.dev, config.browsersync.opts.dev)
+      // var server = packages.browserSync.init(config.browsersync.opts.prod)
+      var server = packages.php.server(config.php.opts.prod, () => {
+        packages.browserSync.init(config.browsersync.opts.prod)
+      })
     }
+    cb()
 // -------------------------------------------------------------------- End Task
-    return stream
+    return server
   }
 }

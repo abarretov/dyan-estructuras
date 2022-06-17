@@ -1,0 +1,37 @@
+header.header
+  .wrapper.bg--green
+    .container
+      .header__top
+        .header__contact-info
+          a(href="./#footer")
+            img(src="./assets/images/icons/contact/clock.svg" alt="")
+            span.primary Horario:
+            span &nbsp;Lun - Vie: 8am - 5pm
+          a(href="tel:+51933987543")
+            img(src="./assets/images/icons/contact/phone.svg" alt="")
+            span.primary Teléfono:
+            span &nbsp;+51 933 987 543
+          a(href="mailto:info@dyanstructuras.com")
+            img(src="./assets/images/icons/contact/envelope.svg" alt="")
+            span.primary Email:
+            span &nbsp;info@dyanstructuras.com
+        .header__social-icon
+          a(href="" target="_blank")
+            img(src="./assets/images/icons/networks/facebook.svg" alt="")
+          a(href="" target="_blank")
+            img(src="./assets/images/icons/networks/instagram.svg" alt="")
+          a(href="" target="_blank")
+            img(src="./assets/images/icons/networks/linkedin.svg" alt="")
+  .wrapper
+    .container
+      .header__bottom
+        a.brand(href="./")
+        button.hamburger
+          span.hamburger__icon
+        .navbar
+          nav#navbarNav.navbar__nav
+            a.navbar__item(href="./") Inicio
+            a.navbar__item.scroll-trigger(href="./#servicios") Servicios
+            a.navbar__item.scroll-trigger(href="./#proyectos") Proyectos
+            a.navbar__item(href="./equipo.html") Equipo
+            a.navbar__item(href="./contacto.html") Contacto

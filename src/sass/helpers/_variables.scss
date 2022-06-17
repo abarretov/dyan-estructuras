@@ -1,4 +1,13 @@
-// BREAKPOINTS
+// GRID SYSTEM =================================================================
+$container-max-width: 100% !default;
+$container-max-width-sm: 708px !default;
+$container-max-width-md: 960px !default;
+$container-max-width-lg: 1120px !default;
+$container-max-width-xl: 1120px !default;
+$columns-number: 12 !default; // set number of columns in the grid
+$gutter: 80px !default; // set gutter size
+
+// BREAKPOINTS =================================================================
 $breakpoints: (
   tiny: 360px,
   extra-small: 411px,
@@ -9,23 +18,28 @@ $breakpoints: (
   huge: 1920px,
   giant: 2560px,
   colossal: 2880px
-);
+) !default;
 
-// COLORS
-$strong-blue: #197BBD;
-$bright-orange: #F2AF29;
-$dark-gray: #444444;
-$light-gray: #D2D2D2;
-$very-light-gray: #EFEFEF;
-$white: #FFFFFF;
-$black: #000000;
-$black-transparent: transparentize($black, 0.7);
-$strong-blue-transparent: transparentize($strong-blue, 0.3);
-$black-transparent--hero: transparentize($black, 0.8);
-$strong-blue-transparent--hero: transparentize($strong-blue, 0.5);
-$white-transparent: transparentize($white, 0.6);
-$strong-orange: #C3860C;
+// COLORS ======================================================================
+$primary: #FFC845 !default;
+$primary-transparent: transparentize($primary, 0.3) !default;
+$secondary: #036F7C !default;
+$light-secondary: #68A9AF !default;
+$dark-secondary: #256117 !default;
+$secondary-transparent: transparentize($secondary, 0.3) !default;
+$tertiary: #071A52 !default;
+$tertiary-transparent: transparentize($tertiary, 0.1) !default;
+$white: #FCFCFC !default;
+$pure-white: #FFFFFF !default;
+$white-transparent: transparentize($white, 0.8) !default;
+$black: #000000 !default;
+$black-transparent: transparentize($black, 0.4) !default;
+$gray: #D2D2D2 !default;
+$light-gray: #ECECEC !default;
+$dark-gray: #393E46 !default;
+$transparent: transparentize($white, 1) !default;
+$success: #28A745 !default;
+$error: #DC3545 !default;
 
-// FONTS
-$ubuntu: 'Ubuntu', sans-serif;
-$open-sans: 'Open Sans', sans-serif;
+// FONTS =======================================================================
+$barlow-semi-condensed: 'Barlow Semi Condensed', sans-serif;

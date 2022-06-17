@@ -1,20 +1,23 @@
 // =============================================================================
 // Gulp task: views
-// Description: Move all our html files to the public folder
+// Description: Move all our html files to the public folder and parse build
+// blocks in HTML files to replace references to non-optimized scripts or
+// stylesheets
 // =============================================================================
 // Packages
-//   gulp / gulp-useref / gulp-terser / gulp-if / gulp-cssnano / gulp-load-plugins
+//   gulp / gulp-useref / gulp-terser / gulp-cssnano / gulp-load-plugins
+//   gulp-if
 // =============================================================================
 
-module.exports = function(gulp, plugins, config) {
-  return function() {
-    let stream =
+module.exports = (gulp, packages, config) => {
+  return () => {
 // ------------------------------------------------------------------ Start Task
+    let stream =
       gulp.src(config.views.glob.build)
-      .pipe(plugins.useref())
-      .pipe(plugins.if('*.js', plugins.terser()))
-      .pipe(plugins.if('*.css', plugins.cssnano()))
-      .pipe(gulp.dest(config.views.dir.public))
+        .pipe(packages.useref())
+        .pipe(packages.if('*.js', packages.terser()))
+        .pipe(packages.if('*.css', packages.cssnano()))
+        .pipe(gulp.dest(config.views.dir.public))
 // -------------------------------------------------------------------- End Task
     return stream
   }

@@ -1,19 +1,18 @@
 // =============================================================================
-// Gulp task: default
+// Gulp task: build
 // Description: Building files for production
 // =============================================================================
 // Packages
 //   gulp
 // Tasks -----------------------------------------------------------------------
-//   clean / images / fonts / sass / scripts / views
+//   clean / images / copy / sass / scripts / views
 // =============================================================================
 
-module.exports = function(gulp, plugins, config) {
-  return function(cb) {
-    let stream =
+module.exports = (gulp, packages, config) => {
+  return (cb) => {
 // ------------------------------------------------------------------ Start Task
-      gulp.series('clean', 'images', 'fonts', 'sass', 'scripts', 'views')
-      cb()
+    let stream = gulp.series('clean', 'images', 'copy', 'sass', 'scripts', 'views')
+    cb()
 // -------------------------------------------------------------------- End Task
     return stream(process.env.FOLDERS_TO_CLEAN = 'public', process.env.NODE_ENV = 'production')
   }

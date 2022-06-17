@@ -3,19 +3,19 @@
 // Description: Transpile all our Pug files to HTML
 // =============================================================================
 // Packages
-//   gulp / gulp-prettier / gulp-load-plugins / browser-sync / pug
+//   gulp / gulp-prettier / gulp-load-plugins / gulp-pug
 // =============================================================================
 
-module.exports = function(gulp, plugins, config) {
-  return function() {
+module.exports = (gulp, packages, config) => {
+  return () => {
+// ------------------------------------------------------------------ Start Task
     let stream =
-// ---------------------------------------------- Start Task
       gulp.src(config.pug.glob.transpile)
-      .pipe(plugins.pug(config.pug.opts))
-      .pipe(plugins.prettier(config.prettier.opts))
-      .pipe(gulp.dest(config.pug.dir.build))
-      .pipe(plugins.browserSync.stream())
-// ------------------------------------------------ End Task
+        .pipe(packages.pug(config.pug.opts.transpile))
+        .pipe(packages.prettier(config.html.opts.beautify))
+        .pipe(gulp.dest(config.pug.dir.build))
+        // .pipe(packages.browserSync.stream({ once: true }))
+// -------------------------------------------------------------------- End Task
     return stream
   }
 }

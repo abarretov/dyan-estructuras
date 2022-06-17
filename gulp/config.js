@@ -1,153 +1,195 @@
 // =============================================================================
 // Config file
-// Description: Contain all the options, globs and routes of the plugins
+// Description: Contain all the options, globs and routes of the packages
 // =============================================================================
+// - del
+// - browsersync
+// - pug
+// - html
+// - sass
+// - images
+// - copy
+// - scripts
+// - views
+// - watch
 
 module.exports = {
-// ---------------------------------------------------------------- DEL
+
+// ------------------------------------------------------------------------- del
   del: {
     glob: {
-      build: ['./build/**', '!./build'],
-      public: ['./public/**', '!./public'],
-      all: ['./build/**', './public/**', '!./build', '!./public']
+      build: ['build/**', '!build', '.js-cache', '.scss-cache'],
+      public: ['public/**', '!public', '.js-cache', '.scss-cache'],
+      all: ['build/**', 'public/**', '!build', '!public', '.js-cache', '.scss-cache']
     }
   },
-// ---------------------------------------------------------------- BROWSERSYNC
+// ----------------------------------------------------------------- browsersync
   browsersync: {
     opts: {
       dev: {
         browser: 'chrome',
-        // If you will work only with HTML files
-        server: {
-          baseDir: './build/'
+        // if you will work with HTML files only
+        // server: {
+        //   baseDir: 'build/'
+        // },
+        // if you will work with PHP files
+        proxy: 'localhost:8010',
+        baseDir: './build/',
+        open: true,
+        notify: false,
+        files: [
+          'build/css/**/*.css',
+          'build/js/**/*.js'
+        ],
+        watchOptions: {
+          awaitWriteFinish : true
         }
-        // If you will work with PHP files
-        // proxy: 'localhost:8010',
-        // baseDir: './build/',
-        // open: true,
-        // notify: false
       },
       prod: {
         browser: 'chrome',
-        // If you will work only with HTML files
-        server: {
-          baseDir: './public/'
-        }
-        // If you will work with PHP files
-        // proxy: 'localhost:8010',
-        // baseDir: './public/',
-        // open: true,
-        // notify: false
+        // if you will work with HTML files only
+        // server: {
+        //   baseDir: 'public/'
+        // }
+        // if you will work with PHP files
+        proxy: 'localhost:8010',
+        baseDir: './public/',
+        open: true,
+        notify: false
       }
     }
   },
-// ---------------------------------------------------------------- PHPSYNC
-  phpsync: {
+// ------------------------------------------------------------------------- php
+  php: {
     opts: {
       dev: {
         base: './build/',
+        bin:'C:/Program Files/php/php.exe',
+		    ini: 'C:/Program Files/php/php.ini',
         port: 8010,
         keepalive: true
       },
       prod: {
         base: './public/',
+        bin:'C:/Program Files/php/php.exe',
+		    ini: 'C:/Program Files/php/php.ini',
         port: 8010,
         keepalive: true
       }
     }
   },
-// ---------------------------------------------------------------- PUG
+// ------------------------------------------------------------------------- pug
   pug: {
     dir: {
-      build: './build/',
-      public: './public/'
+      build: 'build/',
+      public: 'public/'
     },
     glob: {
-      src: './src/pug/**/*.pug',
-      transpile: ['./src/pug/**/*.pug', '!./src/pug/includes/**']
+      src: 'src/pug/**/*.pug',
+      transpile: ['src/pug/**/*.pug', '!src/pug/partials/**', '!src/pug/templates/**']
     },
     opts: {
-      doctype: 'html'
+      transpile: {
+        doctype: 'html'
+      }
     }
   },
-// ---------------------------------------------------------------- PRETTIER
-  prettier: {
+// ------------------------------------------------------------------------ html
+  html: {
     opts: {
-      printWidth: 90,
-      parser: 'html',
-      htmlWhitespaceSensitivity: 'ignore'
+      beautify: {
+        // printWidth: 90,
+        parser: 'html',
+        htmlWhitespaceSensitivity: 'ignore'
+      }
     }
   },
-// ---------------------------------------------------------------- SASS
+// ------------------------------------------------------------------------ sass
   sass: {
     dir: {
-      build: './build/css/',
-      public:'./public/css/'
+      build: 'build/css/',
+      public:'public/css/'
     },
     glob: {
-      src: './src/sass/**/*.scss'
+      src: 'src/sass/**/*.scss'
     },
     opts: {
-      development: {
+      dev: {
         outputStyle: 'expanded'
       },
-      production: {
+      prod: {
         outputStyle: 'compressed'
       }
     }
   },
-// ---------------------------------------------------------------- SCRIPTS
-  scripts: {
-    dir: {
-      build: './build/js/',
-      public:'./public/js/'
-    },
-    glob: {
-      src: './src/js/**/*.js'
-    }
-  },
-// ---------------------------------------------------------------- IMAGES
+// ---------------------------------------------------------------------- images
   images: {
     dir: {
-      build: './build/assets/images/',
-      public: './public/assets/images/'
+      build: 'build/assets/images/',
+      public: 'public/assets/images/'
     },
     glob: {
       src: [
-        './src/assets/images/**',
-        '!./src/assets/images/**/*.+(orig|copy).+(webp|png|jpg|jpeg|gif|svg|ico)'
+        'src/assets/images/**',
+        '!src/assets/images/**/*.+(orig|copy).+(webp|png|jpg|jpeg|gif|svg|ico)',
+        '!src/assets/images/**/+(favicon|img)*.+(webp|png|jpg|jpeg|gif|svg|ico)'
       ],
-      build: './build/assets/images/**'
+      build: 'build/assets/images/**'
     }
   },
-// ---------------------------------------------------------------- VIEWS
+// ------------------------------------------------------------------------ copy
+  copy: {
+    dir: {
+      build: 'build/',
+      public: 'public/'
+    },
+    glob: {
+      src: [
+        'src/assets/fonts/**',
+        'src/assets/images/**/+(favicon|img)*.+(webp|png|jpg|jpeg|gif|svg|ico)',
+        'src/js/lib/**',
+        'src/inc/**',
+      ],
+      build: [
+        'build/assets/fonts/**',
+        'build/assets/images/**',
+        'build/js/lib/**',
+        'build/inc/**'
+      ]
+    }
+  },
+// --------------------------------------------------------------------- scripts
+  scripts: {
+    dir: {
+      src: 'src/js/',
+      build: 'build/js/',
+      public:'public/js/'
+    },
+    glob: {
+      src: [
+        'src/js/**/*.js',
+        '!src/js/lib/**'
+      ]
+    }
+  },
+// ----------------------------------------------------------------------- views
   views: {
     dir: {
-      public: './public/'
+      public: 'public/'
     },
     glob: {
-      build: './build/**/*.+(php|html)'
+      build: 'build/**/*.html'
     }
   },
-// ---------------------------------------------------------------- FONTS
-  fonts: {
-    dir: {
-      build: './build/assets/fonts/',
-      public: './public/assets/fonts/'
-    },
-    glob: {
-      src: './src/assets/fonts/**',
-      build: './build/assets/fonts/**'
-    }
-  },
-// ---------------------------------------------------------------- WATCH
+// ----------------------------------------------------------------------- watch
   watch: {
     glob: {
       src: [
-        './src/js/**/*.js',
-        './src/assets/fonts/**',
-        './src/assets/images/**',
-        '!./src/assets/images/**/*.+(orig).+(webp|png|jpg|jpeg|gif|svg|ico)'
+        'src/js/**/*.js',
+        'src/assets/fonts/**',
+        'src/assets/images/**',
+        '!src/assets/images/**/*.+(orig|copy).+(webp|png|jpg|jpeg|gif|svg|ico)',
+        '!src/assets/images/**/+(favicon|img)*.+(webp|png|jpg|jpeg|gif|svg|ico)'
       ]
     }
   }

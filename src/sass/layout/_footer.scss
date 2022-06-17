@@ -1,76 +1,128 @@
 .footer {
-  & a, & p {
-    color: $white;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.2;
+  color: $white;
+  &__credits, &__info {
+    @extend %row;
   }
-  & a {
-    text-decoration: none;
-    &:hover {
+  &__info {
+    padding: 80px 0 40px;
+    margin: 0;
+    @include respond-to(large) {
+      margin: 0 -40px;
+    }
+  }
+  &__item {
+    margin-bottom: 60px;
+    @include respond-to(large) {
+      margin-bottom: 0;
+    }
+  }
+  &__title {
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 500;
+  }
+  &__text {
+    margin-bottom: 20px;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+  &__list {
+    list-style: none;
+    padding: 0;
+    & li {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: flex-end;
       color: $white;
-    }
-  }
-  &__top, &__bottom {
-    padding: 5% 0;
-    @include respond-to(small) {
-      padding: 2% 0;
-    }
-    @include respond-to(large) {
-      padding: 1% 0;
-    }
-  }
-  &__top {
-    p {
-      text-align: center;
-      font-style: italic;
-    }
-  }
-  &__bottom {
-    display: grid;
-    grid-template-areas: "brand"
-                         "copyright"
-                         "networks";
-    height: 200px;
-    @include respond-to(small) {
-      height: 170px;
-    }
-    @include respond-to(large) {
-      height: inherit;
-      display: grid;
-      grid-template-columns: 1fr 3fr 1fr;
-      grid-template-areas: "brand copyright networks";
-    }
-    & p {
-      font-weight: 600;
-    }
-  }
-  &__copyright {
-    grid-area: copyright;
-    align-self: center;
-    text-align: center;
-  }
-  &__nav {
-    margin-bottom: 5px;
-    & a {
-      &:nth-last-child(n+2) {
-        &::after {
-          margin: 0 5px;
-          content: '/';
-        }
+      font-weight: 300;
+      & img {
+        margin-right: 10px;
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
       }
     }
   }
-  &__networks {
-    grid-area: networks;
-    justify-self: center;
-    align-self: center;
+  &__map {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    & img {
+      object-fit: contain;
+      width: 100%;
+      height: auto;
+    }
+  }
+  &__marker {
+    position: absolute;
+    left: 23%;
+    bottom: 28%;
+    border-radius: 50%;
+    background-color: $primary;
+    height: 5px;
+    width: 5px;
+    transform: rotateX(55deg);
+    @include respond-to(tiny) {
+      left: 23.3%;
+      bottom: 28%;
+    }
     @include respond-to(large) {
-      justify-self: end;
+      left: 23%;
+      bottom: 28%;
     }
-    & a {
-      margin: 0 2px;
-      font-size: 20px;
+    &::before {
+      content: '';
+      position: absolute;
+      box-shadow: 0 0 1px 2px $primary;
+      margin: -15px 0 0 -17px;
+      border-radius: 50%;
+      height: 40px;
+      width: 40px;
+      animation: wave ease-out 1.2s infinite;
+      opacity: 0;
     }
+  }
+  &__pin {
+    position: absolute;
+    left: 15.5%;
+    bottom: 31%;
+    width: 40px;
+    height: 40px;
+    background-image: url('../assets/images/icons/footer/map-marker.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: movedown 0.6s ease-in-out infinite alternate;
+    @include respond-to(tiny) {
+      left: 17.5%;
+    }
+    @include respond-to(small) {
+      left: 17%;
+    }
+    @include respond-to(large) {
+      left: 15%;
+      bottom: 30%;
+    }
+  }
+  &__credits {
+    padding: 0 40px 20px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 240px;
+    @include respond-to(large) {
+      flex-direction: row;
+      padding: 0 0 20px;
+      height: auto;
+    }
+  }
+  &__copyright, &__author {
+    line-height: 1.2;
+    text-align: center;
+    @include respond-to(large) {
+      text-align: left;
+    }
+  }
+  &__logo {
+    color: $white;
   }
 }

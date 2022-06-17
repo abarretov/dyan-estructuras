@@ -1,8 +1,8 @@
-// RESPOND-TO
+// RESPOND TO ==================================================================
 @mixin respond-to($breakpoint) {
-  // Check if the key exists
+  // check if the key exists
   @if map-has-key($breakpoints, $breakpoint) {
-    // Get the value of the key
+    // get the value of the key
     $value: map-get($breakpoints, $breakpoint);
     @media only screen and (min-width: $value) {
       @content;
@@ -13,7 +13,7 @@
   }
 }
 
-// FONT-FACE
+// FONT FACE ===================================================================
 @mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg otf) {
   $src: null;
   $extmods: (eot: "?", svg: "#" + str-replace($name, " ", "_"));
@@ -32,10 +32,150 @@
   }
 }
 
-// PLACEHOLDER
+// ROW GENERATOR ===============================================================
+@mixin row-generator($breakpoint: 'xs') {
+
+  &.top-#{$breakpoint} {
+    align-items: flex-start;
+  }
+  &.middle-#{$breakpoint} {
+    align-items: center;
+  }
+  &.bottom-#{$breakpoint} {
+    align-items: flex-end;
+  }
+  &.baseline-#{$breakpoint} {
+    align-items: baseline;
+  }
+  &.stretch-#{$breakpoint} {
+    align-items: stretch; // default value
+  }
+  &.start-#{$breakpoint} {
+    justify-content: flex-start; // default value
+  }
+  &.center-#{$breakpoint} {
+    justify-content: center;
+  }
+  &.end-#{$breakpoint} {
+    justify-content: flex-end;
+  }
+  &.around-#{$breakpoint} {
+    justify-content: space-around;
+  }
+  &.between-#{$breakpoint} {
+    justify-content: space-between;
+  }
+  &.evenly-#{$breakpoint} {
+    justify-content: space-evenly;
+  }
+}
+
+// COLUMN GENERATOR ============================================================
+@mixin column-generator($breakpoint: 'xs', $offset: false, $order: false) {
+
+  // columns
+  @for $i from 1 through $columns-number {
+    .col-#{$breakpoint}-#{$i} {
+      flex: 0 0 percentage(calc($i / $columns-number));
+      max-width: calc((100% * $i) / $columns-number);
+    }
+  }
+
+  // size columns based on the natural width of their content
+  .col-#{$breakpoint}-auto {
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+  // offset
+  @if $offset {
+    @for $i from 1 through $columns-number {
+      .col-#{$breakpoint}-offset-#{$i} {
+        margin-left: calc((100% * $i) / $columns-number);
+      }
+    }
+  }
+
+  // order
+  @if $order {
+    .order-#{$breakpoint}-first {
+      order: -1;
+    }
+    .order-#{$breakpoint}-last {
+      order: $columns-number + 1;
+    }
+    @for $i from 1 through $columns-number {
+      .order-#{$breakpoint}-#{$i} {
+        order: $i;
+      }
+    }
+  }
+}
+
+// BORDER SLIDE ================================================================
+@mixin border-slide($hover-color, $border-width, $time) {
+  // hover effect
+  &:hover {
+    & > .border-slide {
+      &::before, &::after {
+        transform: translate3d(0, 0, 0);
+      }
+      & > .border-slide {
+        &::before, &::after {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+    }
+  }
+  & > .border-slide {
+    $easing: cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    position: relative;
+    // initial right and left border settings
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: $border-width;
+      background-color: $hover-color;
+      transition: transform $time $easing;
+    }
+    &::before {
+      left: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+    &::after {
+      right: 0;
+      transform: translate3d(0, -100%, 0);
+    }
+    // initial top and bottom border settings
+    & > .border-slide {
+      &::before, &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: $border-width;
+        background-color: $hover-color;
+        transition: transform $time $easing;
+      }
+      &::before {
+        top: 0;
+        transform: translate3d(-100%, 0, 0);
+      }
+      &::after {
+        bottom: 0; 
+        transform: translate3d(100%, 0, 0);
+      }
+    }
+  }
+}
+
+// PLACEHOLDER =================================================================
 @mixin placeholder() {
-  &::-webkit-input-placeholder {@content}
-  &:-moz-placeholder           {@content}
-  &::-moz-placeholder          {@content}
-  &:-ms-input-placeholder      {@content}
+  &::-webkit-input-placeholder {@content;}
+  &:-moz-placeholder {@content;}
+  &::-moz-placeholder {@content;}
+  &:-ms-input-placeholder {@content;}
 }

@@ -1,0 +1,144 @@
+.whatsapp {
+  $height: 90px;
+  z-index: 98;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  bottom: 30px;
+  right: -200px;
+  display: flex;
+  align-items: center;
+  min-height: $height;
+  transition: 1s;
+  @include respond-to(tiny) {
+    right: -220px;
+  }
+  &--move {
+    right: 15px;
+    @include respond-to(tiny) {
+      right: 30px;
+    }
+    @include respond-to(small) {
+      right: 40px;
+    }
+  }
+  &--show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  &__img {
+    filter: drop-shadow(1px 1px 2px $black-transparent);
+    object-fit: contain;
+    width: 50px;
+    height: 50px;
+    animation: pulse 0.7s infinite alternate;
+    @include respond-to(small) {
+      width: 60px;
+      height: 60px;
+      animation: none;
+    }
+    &:hover {
+      @include respond-to(large) {
+        animation: pulse 0.7s infinite alternate;
+      }
+    }
+  }
+  &__chat {
+    overflow: hidden;
+  }
+  &__content {    
+    display: block;
+    transform: translateY($height);
+    width: 100%;
+    height: auto;
+    opacity: 0;
+  }
+  &__bubble {
+    position: relative;
+    float: left;
+    margin: 0 0 3px 15px;   
+    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    display: block;
+    width: auto;    
+    height: auto;
+    background: #EBEBEB;
+    @include respond-to(tiny) {
+      margin: 0 0 3px 30px;
+    }
+    &--alt {
+      float: right;
+      margin: 10px 25px 3px 0px;
+      background: #DCF8C6;
+    }
+    &--follow {
+      margin: 2px 0 3px 15px;
+      @include respond-to(tiny) {
+        margin: 2px 0 3px 30px;
+      }
+    }
+    &--altfollow {
+      float: right;   
+      margin: 2px 25px 3px 0px;
+      background: #DCF8C6;
+    }
+  }
+  &__txt {
+    padding: 8px 0 8px 0;
+    width:100%;
+  }
+  &__name {
+    margin: 0 0 4px 0;
+    padding: 0 0 0 15px;
+    display: inline-table;
+    color: #3498DB;
+    font-weight: 600;
+    font-size: 14px;
+    &--alt {
+      color: #2ECC51;
+    }        
+  }
+  &__message {
+    margin: auto;
+    padding: 0 15px 0 15px;
+    display: table;
+    color: #2B2B2B;
+    font-size: 14px;
+    font-weight:500;
+  }
+  &__timestamp {
+    position: relative;
+    float:right;
+    margin: auto;
+    padding: 0 15px 0 0;
+    display: table;
+    color: #999;
+    font-size: 11px;
+    text-transform: uppercase; 
+  }
+  &__arrow {
+    position: absolute;
+    float:left;
+    top: 0px;
+    left: -11px;
+    &--alt {
+      float :right;
+      bottom: 20px;
+      left: auto;
+      right: 4px;
+      &::after {
+        border-top: 15px solid #DCF8C6;
+        transform: scaleX(-1);
+      }
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      border-top: 15px solid #EBEBEB;
+      border-left: 15px solid transparent;           
+      border-radius: 4px 0 0 0px;
+      width: 0;
+      height: 0;
+    }
+  }
+}

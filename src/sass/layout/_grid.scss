@@ -1,45 +1,130 @@
-.wrapper {
+/*
+ * Originally authored by José Jesús Ochoa Torres
+ * https://github.com/JoseJesusOchoaTorres/grid-system-example
+ * ------------------------------------------------------------
+ * To simulate or integrate on other classes a System Grid
+ */
+
+%wrapper {
   position: relative;
   margin: 0 auto;
   width: 100%;
 }
 
-.container {
+%container {
   position: relative;
   margin: 0 auto;
-  padding: 0 5%;
-  max-width: 1280px;
+  width: 100%;
   height: 100%;
-  @include respond-to(large) {
-    padding: 0 60px;
+
+  // set the max-width for small devices (landscape phones, tablets, etc)
+  @include respond-to(small) {
+    max-width: $container-max-width-sm;
   }
+
+  // set the max-width for medium devices (tablets, 768px and up)
+  @include respond-to(medium) {
+    max-width: $container-max-width-md;
+  }
+
+  // set the max-width for large devices (desktops, 1280px and up)
+  @include respond-to(large) {
+    max-width: $container-max-width-lg;
+  }
+
+  // set the max-width for extra large devices (large desktops, 1366px and up)
+  @include respond-to(extra-large) {
+    max-width: $container-max-width-xl;
+  }
+
+  // set the max-width equal to 100%
+  &.fluid {
+    max-width: $container-max-width;
+  }
+}
+
+%row {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+
+  // creates the classes for extra small devices (landscape phones, etc)
+  @include row-generator('xs');
+
+  // creates the classes for small devices (tablets, 768px and up)
+  @include respond-to(small) {
+    @include row-generator('sm');
+  }
+
+  // creates the classes for medium devices (desktops, 1024px and up)
+  @include respond-to(medium) {
+    @include row-generator('md');
+  }
+
+  // creates the classes for large devices (large desktops, 1280px and up)
+  @include respond-to(large) {
+    @include row-generator('lg');
+  }
+
+  // creates the classes for extra large devices (extra large desktops, 1366px and up)
+  @include respond-to(extra-large) {
+    @include row-generator('xl');
+  }
+
+  // removes only the gutters from rows edge with a negative margin
+  &.no-gutter {
+    @include respond-to(large) {
+      margin: 0 calc($gutter / 2 * -1);
+    }
+  }
+}
+
+%col {
+  padding: 0 calc($gutter / 2);
+  &.no-gutter {
+    padding: 0;
+  }
+}
+ 
+.wrapper {
+  @extend %wrapper;
+}
+
+.container {
+  @extend %container;
 }
 
 .row {
-  padding: 60px 0;
+  @extend %row;
 }
 
-.box {
-  margin: 0 auto;
-  max-width: 100%;
-  &--sm {
-    @include respond-to(small) {
-      max-width: 576px;
-    }
-  }
-  &--md {
-    @include respond-to(large) {
-      max-width: 768px;
-    }
-  }
-  &--lg {
-    @include respond-to(large) {
-      max-width: 992px;
-    }
-  }
-  &--xl {
-    @include respond-to(large) {
-      max-width: 1140px;
-    }
-  }
+[class*=col-] {
+  @extend %col;
+}
+
+.col {
+  @extend %col;
+  // flex: 1; // equivalent to flex: 1 0;
+  // flex-grow: 1;
+  flex-grow: 0; // removes growth factor
+  flex-shrink: 1;
+  flex-basis: auto;
+}
+
+@include column-generator('xs', true, true);
+
+@include respond-to(small) {
+  @include column-generator('sm', true, true);
+}
+
+@include respond-to(medium) {
+  @include column-generator('md', true, true);
+}
+
+@include respond-to(large) {
+  @include column-generator('lg', true, true);
+}
+
+@include respond-to(extra-large) {
+  @include column-generator('xl', true, true);
 }

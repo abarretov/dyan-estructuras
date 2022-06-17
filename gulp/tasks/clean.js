@@ -6,18 +6,18 @@
 //   gulp / del / gulp-load-plugins
 // =============================================================================
 
-module.exports = function(gulp, plugins, config) {
-  return async function() {
+module.exports = (gulp, packages, config) => {
+  return async () => {
 // ------------------------------------------------------------------ Start Task
     switch (process.env.FOLDERS_TO_CLEAN) {
       case 'build':
-        var promise = await plugins.del(config.del.glob.build)
+        var promise = await packages.del(config.del.glob.build)
         break
       case 'public':
-        var promise = await plugins.del(config.del.glob.public)
+        var promise = await packages.del(config.del.glob.public)
         break
       default:
-        var promise = await plugins.del(config.del.glob.all)
+        var promise = await packages.del(config.del.glob.all)
     }
 // -------------------------------------------------------------------- End Task
     return promise
